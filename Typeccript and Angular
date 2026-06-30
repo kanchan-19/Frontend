@@ -1,0 +1,4731 @@
+DOM - Document Object Model (DOM TREE VISUALIZER)
+#################################################
+Example:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+    <h1 id="x">Welcome</h1>
+
+</body>
+
+</html>
+
+</body>
+
+</body>
+
+</html>
+
+
+
+Console: press f12 open the console
+--------
+document.firstElementChild.lastChild.firstElementChild
+
+var heading=document.firstElementChild.lastChild.firstElementChild
+
+heading.innerHTML="Welcome"
+
+Note:
+-----
+
+In a web browser, JavaScript is commonly used to manipulate the DOM (Document Object Model), making web applications dynamic and interactive.
+
+AngularJS (the older framework)
+
+With AngularJS (1.x), developers primarily wrote code in JavaScript.
+
+Support for AngularJS (1.x) officially ended on:
+
+December 31, 2021
+
+After that date, Google stopped providing:
+
+Security updates
+Bug fixes
+Official support and maintenance
+
+
+
+Angular (2+ and later)
+
+Starting with Angular 2, the framework was redesigned and uses TypeScript as its primary language.
+
+📌 Key Angular versions timeline
+Angular 2 (2016)
+A complete rewrite from AngularJS. Introduced TypeScript, components, and modern architecture.
+Angular 3
+❌ Skipped (to keep version numbers aligned across internal packages)
+Angular 4 (2017)
+Performance improvements, smaller bundles.
+Angular 5 (2017)
+Better build optimizer and HTTP improvements.
+Angular 6 (2018)
+Introduced ng update, ng add, Angular CLI improvements.
+Angular 7 (2018)
+Virtual scrolling, better CLI prompts.
+Angular 8 (2019)
+Differential loading, lazy loading improvements.
+Angular 9 (2020)
+Ivy renderer became default (big performance improvement).
+Angular 10–13 (2020–2021)
+Improvements in performance, strict typing, updates to tooling.
+Angular 14–15 (2022)
+Standalone components introduced (less reliance on NgModules).
+Angular 16–17 (2023–2024)
+Signals introduced (reactivity model improvements), better SSR.
+
+######################
+TypeScript Notes
+######################
+
+-> Typescript is a super set of java script
+-> Strictly typed: Meaning datatypes for variables needs to be defined
+-> Typescript is transpiled to javascript using tsc (Typescript Compiler)
+-> Coding becomes easier with typescript when compared to javascript
+-> Typescript comes with oops concept
+
+Steps to install typescript
+---------------------------
+-> https://nodejs.org/en/download
+
+-> Check
+node -v
+npm -v
+
+-> Use npm to install typescript: npm install -g typescript
+
+-> check
+tsc -v
+
+
+📌 What is Node.js?
+
+Node.js is a runtime environment that allows you to run JavaScript outside the browser.
+
+Normally:
+
+JavaScript runs in the browser
+
+With Node.js:
+
+JavaScript can run on your computer/server
+
+
+📌 What is npm?
+
+npm = Node Package Manager
+
+👉 Example:
+
+📌 Difference between node -v and npm -v
+1. node -v
+Shows installed Node.js version
+Checks if Node.js is installed
+
+Example:
+
+node -v
+
+Output:
+
+v20.11.0
+2. npm -v
+Shows installed npm version
+Checks if npm is installed
+
+Example:
+
+npm install -g typescript
+
+
+Variable and datatypes
+----------------------
+1. number
+2. string
+3. boolean
+4. any
+5. enum
+
+Syntax: var variableName:dataType=value;
+
+Naming Conventions:
+-> camelCase for variables and methods: finalResult
+-> PascalCase for class: UserService
+-> Constants: MAX_LIMIT
+-> Boolean variables: starts with 
+is
+has
+can
+should
+
+example: isPresent
+
+->Arrays → plural names
+example: users not user
+
+-> Files → kebab-case
+user-profile.component.ts
+auth.service.ts
+
+Example 1:
+
+var n1:number=10;
+console.log(n1);
+
+Command:
+node variables.ts
+or
+tsc variables.ts
+
+Inject variable.js to html
+--------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="variables.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+Example 2:
+var n1:string="mike";
+console.log(n1);
+
+Example 3:
+var n1:boolean=true;
+console.log(n1);
+
+Example 4:
+var n1:any=10.3;
+console.log(n1);
+
+Example 5
+var n1:any={
+    id:1,
+    name:"mike",
+    email:"mike@gmail.com"
+};
+console.log(n1);
+
+Array:
+Example 1:
+var n1:Array<string>=["mike","stallin","adam"]
+console.log(n1);
+console.log(n1[0]);
+console.log(n1.length);
+
+
+Example 2:
+var n1:Array<any>=["mike","stallin",123]
+console.log(n1);
+
+alert, confirm and prompt
+------------------------
+Example:
+console.log("hello");
+alert("warning");
+confirm("do you want to continue?");
+var x = prompt("enter your name:");
+console.log(x);
+
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="variables.js"></script>
+</head>
+<body>
+    
+</body>
+</html>
+
+Comments
+--------
+//console.log("hello"); -->Single line comment
+alert("warning");
+confirm("do you want to continue?");
+var x = prompt("enter your name:");
+console.log(x);
+
+
+console.log("hello");
+alert("warning");
+confirm("do you want to continue?");
+/*var x = prompt("enter your name:");--->Mulitline comment
+console.log(x);*/
+
+
+enum - Collection of constants
+----------------------
+Example 1:
+enum Gender{
+    Male,
+    Female
+}
+
+console.log(Gender.Male);
+console.log(Gender[0])
+
+Example 2:
+enum Gender{
+    Male=5,
+    Female
+}
+
+console.log(Gender.Male);
+console.log(Gender[5])
+
+String within String
+------------------
+Example:
+var n1:string="<a href=''></a>"
+
+back tick
+-----------
+
+Example:
+var n1:string="mike"
+var n2:string=`my name is ${n1}`;
+console.log(n2);
+
+
+Example:
+var n1:string="mike"
+console.log(n1.length);
+console.log(n1.charAt(1));
+console.log(n1.indexOf('i'));
+
+var arr:Array<String> = n1.split('i');
+console.log(arr);
+
+Union Type:
+----------
+
+Example:
+var n1:string | number ;
+
+n1=10;
+console.log(n1);
+
+n1="mike";
+console.log(n1);
+
+Operators in Typescript
+----------------------
+Example:
+
+
+let a: number = 10;
+let b: number = 3;
+
+console.log("Addition:", a + b);        // 13
+console.log("Subtraction:", a - b);     // 7
+console.log("Multiplication:", a * b);  // 30
+console.log("Division:", a / b);        // 3.3333
+console.log("Modulus:", a % b);         // 1
+console.log("Power:", a ** b);          // 1000
+
+a++;
+console.log("Increment:", a);           // 11
+
+b--;
+console.log("Decrement:", b);           // 2
+
+Comparision Operators
+--------------------
+let a: number = 10;
+let b: number = 5;
+
+console.log(a == b);    // false
+console.log(a === b);   // false
+console.log(a != b);    // true
+console.log(a !== b);   // true
+console.log(a > b);     // true
+console.log(a < b);     // false
+console.log(a >= b);    // true
+console.log(a <= b);    // false
+
+Logical Operators
+------------------
+Example 1: And Operator
+let age: number = 20;
+let hasLicense: boolean = true;
+
+console.log(age >= 18 && hasLicense); // true
+
+Example 2: Or Operator
+let isWeekend: boolean = false;
+let isHoliday: boolean = true;
+
+console.log(isWeekend || isHoliday); // true
+
+Example 3: Not Operator
+let isLoggedIn: boolean = false;
+
+console.log(!isLoggedIn); // true
+
+Example 4:
+----------
+let age: number = 25;
+let hasID: boolean = true;
+let isMember: boolean = false;
+
+console.log(age >= 18 && hasID);      // true
+console.log(age < 18 || isMember);    // false
+console.log(!isMember);    
+
+Ternary Operator in TypeScript
+-----------------------------
+
+The ternary operator (? :) is a shorthand for if...else.
+
+Syntax
+condition ? valueIfTrue : valueIfFalse;
+
+Example 1: Simple Example
+
+let age: number = 20;
+
+let result = age >= 18 ? "Adult" : "Minor";
+
+console.log(result);
+
+Flow Control Statements in TypeScript
+
+Flow control statements determine the order in which code executes.
+
+1. if Statement
+
+Executes a block if a condition is true.
+
+Example:
+
+let age: number = 20;
+
+if (age >= 18) {
+    console.log("You are an adult");
+}
+
+Output:
+
+You are an adult
+
+
+2. if...else Statement
+
+Executes one block if the condition is true, otherwise another block.
+
+Example:
+---------
+let age: number = 16;
+
+if (age >= 18) {
+    console.log("Adult");
+} else {
+    console.log("Minor");
+}
+
+Output:
+
+Minor
+
+3. if...else if...else
+
+Used to check multiple conditions.
+
+Example:
+
+let marks: number = 85;
+
+if (marks >= 90) {
+    console.log("Grade A");
+} else if (marks >= 75) {
+    console.log("Grade B");
+} else {
+    console.log("Grade C");
+}
+
+Output:
+
+Grade B
+
+4. switch Statement
+
+Used when comparing one value against multiple cases.
+
+Example:
+
+let day: number = 3;
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    case 3:
+        console.log("Wednesday");
+        break;
+    default:
+        console.log("Invalid day");
+}
+
+Output:
+
+Wednesday
+
+5. for Loop
+
+Repeats code a specific number of times.
+
+Example
+
+for (let i = 1; i <= 5; i++) {
+    console.log(i);
+}
+
+Output:
+
+1
+2
+3
+4
+5
+
+
+6. while Loop
+
+Repeats while a condition is true.
+
+Example:
+
+let i: number = 1;
+
+while (i <= 3) {
+    console.log(i);
+    i++;
+}
+
+Output:
+
+1
+2
+3
+
+7. do...while Loop
+
+Executes the block at least once.
+
+let i: number = 1;
+
+do {
+    console.log(i);
+    i++;
+} while (i <= 3);
+
+Output:
+
+1
+2
+3
+
+8. break Statement
+
+Stops a loop or switch.
+
+for (let i = 1; i <= 5; i++) {
+    if (i === 3) {
+        break;
+    }
+    console.log(i);
+}
+
+Output:
+
+1
+2
+
+9. continue Statement
+
+Skips the current iteration and moves to the next one.
+
+for (let i = 1; i <= 5; i++) {
+    if (i === 3) {
+        continue;
+    }
+    console.log(i);
+}
+
+Output:
+
+1
+2
+4
+5
+
+Objects and Arrays in TypeScript
+-----------------------------
+TypeScript adds type safety to JavaScript objects and arrays, so you can define what kind of data they hold.
+
+1. Objects in TypeScript
+
+An object stores data in key–value pairs.
+
+Basic Object Example
+--------------------
+let student: { name: string; age: number } = {
+    name: "John",
+    age: 20
+};
+
+console.log(student.name);
+console.log(student.age);
+
+Output:
+
+John
+20
+
+Object with Optional Property
+---------------------------
+let user: { name: string; email?: string } = {
+    name: "Alice"
+};
+
+console.log(user.name);
+email? means optional property.
+
+Object Type Using type
+---------------------
+type Employee = {
+    id: number;
+    name: string;
+    salary: number;
+};
+
+let emp: Employee = {
+    id: 101,
+    name: "David",
+    salary: 50000
+};
+
+console.log(emp.name);
+
+2. Arrays in TypeScript
+
+An array stores multiple values of the same type.
+
+Number Array
+--------------
+let numbers: number[] = [1, 2, 3, 4, 5];
+
+console.log(numbers);
+
+String Array
+---------------
+let names: string[] = ["John", "Alice", "Bob"];
+
+console.log(names);
+
+Alternative Array Syntax
+------------------
+let marks: Array<number> = [80, 85, 90];
+console.log(marks);
+
+Array of Objects
+------------------
+let students: { name: string; age: number }[] = [
+    { name: "John", age: 20 },
+    { name: "Alice", age: 22 }
+];
+
+console.log(students[0].name);
+
+Output:
+
+John
+
+Mixed Example (Array + Loop)
+----------------------------
+let nums: number[] = [10, 20, 30];
+
+for (let i = 0; i < nums.length; i++) {
+    console.log(nums[i]);
+}
+
+Functions in java
+-------------------
+-> Syntax
+----------
+
+function functionName(parameter: type): returnType {
+  // code
+  return value;
+}
+
+Example 1:
+
+function greet(name: string): string {
+  return "Hello " + name;
+}
+
+console.log(greet("Sam"));
+
+
+Example 2:
+----------
+function display(name: string): void {
+  console.log(name);
+}
+
+display("mike");
+
+
+Example 3:
+----------
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+console.log(add(10, 20));
+
+Example 4: Optional Parameter
+----------------------------
+function greet(name?: string) {
+  if (name) {
+    console.log("Hello " + name);
+  } else {
+    console.log("Hello Guest");
+  }
+}
+
+greet("Sam");
+greet();
+
+Example 5: Default Value
+------------------------
+function greet(name: string = 'Guest') {
+  console.log(name);
+}
+
+greet("Sam");
+greet();
+
+
+Example 6: anonymous function
+------------------------------
+
+Named Function
+→ call using function name
+
+Anonymous Function
+→ store in variable OR pass to another function. Otherwise you cannot call it later
+
+syntax 1:
+const variableName = function() {
+ //code
+};
+
+Syntax 2:
+function1()(anonymousFunction() {
+ //code
+);
+
+Example:
+const greet = function() {
+  console.log("Hello");
+};
+
+greet();
+
+Example:
+setTimeout(function() {
+  console.log("Hello");
+}, 2000);
+
+
+#####################################
+An arrow function is a shorter way of writing a function.
+####################################
+
+syntax 1:
+( ) => {
+   // code
+}
+
+syntax 2:
+(parameter) => {
+   // code
+}
+
+
+
+
+Example 1:
+----------
+const greet = () => {
+  console.log("Hello");
+};
+
+greet();
+
+Example 2:
+---------
+const greet = (name: string) => {
+  console.log("Hello " + name);
+};
+
+greet("Sam");
+
+
+Example 3:
+---------
+const add = (a: number, b: number) => {
+  return a + b;
+};
+
+console.log(add(10, 20));
+
+Example 4:
+---------
+const users = [
+  { id: 'u1', name: 'Mike' },
+  { id: 'u2', name: 'Adam' }
+];
+
+const user = users.find(
+  u => u.id === 'u2'
+);
+
+console.log(user);
+
+
+Difference between let versus block
+-----------------------------------
+let is blocked scoped:
+
+Example 1:
+----------
+
+function test() {
+  if (true) {
+    let x = 10; //CREATED IN IF BLOCK
+  }
+  console.log(x); // ❌ Error
+}
+test();
+
+Example 2:
+---------
+function test() {
+  if (true) {
+    let x = 10;
+    console.log(x);
+  }
+  
+}
+test();
+
+
+var is not blocked scoped it is function scoped
+-------------------------
+Example 3:
+
+function test() {
+  if (true) {
+    var x = 10;
+   
+  }
+   console.log(x);
+}
+test();
+
+Note:
+Example:  Cannot access variable before intialization
+console.log(x);//Error when you run
+let x:number;
+
+Example:Can access variable before initialization
+console.log(x);
+var x:number; //Undefined
+
+
+Definite Assignment (Trust me operator) ( ! ): Trust me i will initialize variable latter.
+---------------------------------------------------------
+var x!:number;
+console.log(x);
+
+Note: Very useful in angular as we will see many practical scenarios where variables are created but initialized latter
+
+
+Interfaces
+--------------
+In TypeScript, interfaces define the structure of an object. They are used to enforce type checking and improve code readability and maintainability.
+
+Example 1:
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+const user: User = {
+  id: 1,
+  name: "Alice",
+  email: "alice@example.com"
+};
+
+Example 2:
+--------
+interface User {
+  id: number;
+  name: string;
+  age?: number;
+}
+
+const user: User = {
+  id: 1,
+  name: "Alice"
+};
+
+Example 3: readonly property
+-------------------------
+interface User {
+  readonly id: number;
+  name: string;
+}
+
+const user: User = {
+  id: 1,
+  name: "Alice"
+};
+
+//user.id = 2; // Error
+
+console.log(user.id);
+
+Example 4:
+---------
+interface Add {
+  (a: number, b: number): number;
+}
+
+const add: Add = (x, y) => x + y;
+
+console.log(add(10,20));
+
+Example 5:
+---------
+interface Person {
+  name: string;
+  greet(): void;
+}
+
+const person: Person = {
+  name: "John",
+  greet() {
+    console.log(`Hello, I'm ${this.name}`);
+  }
+};
+
+console.log(person.name);
+person.greet();
+
+
+Example 6:
+----------
+interface Animal {
+  name: string;
+}
+
+interface Dog extends Animal {
+  breed: string;
+}
+
+const dog: Dog = {
+  name: "Buddy",
+  breed: "Golden Retriever"
+};
+
+console.log(dog.breed);
+console.log(dog.name);
+
+Example 7: multiple inheritance
+----------------------------------
+interface Flyable {
+  fly(): void;
+}
+
+interface Swimmable {
+  swim(): void;
+}
+
+interface Duck extends Flyable, Swimmable {
+  quack(): void;
+}
+
+const duck: Duck = {
+  fly() {
+    console.log("Flying");
+  },
+  swim() {
+    console.log("Swimming");
+  },
+  quack() {
+    console.log("Quack");
+  }
+};
+
+duck.fly();
+duck.quack();
+duck.swim();
+
+Example 8:
+------------
+interface A {
+  a: string;
+}
+
+interface B {
+  b: number;
+}
+
+interface C extends A, B {
+  c: boolean;
+}
+
+const obj: C = {
+  a: "hello",
+  b: 42,
+  c: true
+};
+
+console.log(obj.a);
+console.log(obj.b);
+console.log(obj.c);
+
+
+Classes: Classes in TypeScript are similar to JavaScript classes but add features like access modifiers, type annotations, interfaces, and abstract classes.
+------------------------------------------------------------------------------------------------------------------------------
+
+Note : 
+a. while creating instance variable / non-static variable inside class donot use var keyword
+b. var keyword should be used inside block
+c. object refence store in var keyword
+d. we use constructor() to create constructor inside the class
+
+Example 1:
+-----------
+class Person {
+    name: string; //instance or non-static variable
+    constructor(name: string){
+        this.name = name;
+    }
+    greet():void{
+        console.log(this.name);
+        
+    }
+}
+
+var person = new Person("mike");
+person.greet();
+
+Example 2: public(default)
+--------
+class Person {
+    public name: string; //instance or non-static variable can access anywhere
+    constructor(name: string){
+        this.name = name;
+    }
+    greet():void{
+        console.log(this.name);
+        
+    }
+}
+
+var person = new Person("mike");
+person.greet();
+console.log(person.name); //Correct
+
+
+Example 3: private can be accesed only with the class
+----------
+class Person {
+    private name: string; //instance or non-static variable can access anywhere
+    constructor(name: string){
+        this.name = name;
+    }
+    greet():void{
+        console.log(this.name);
+        
+    }
+}
+
+var person = new Person("mike");
+person.greet();
+console.log(person.name); //In correct
+
+Note: Access Specifier
+------------------------
+1. public (default)
+
+A public member can be accessed from anywhere. You can omit public because it is the default.
+
+2. private
+
+A private member can only be accessed within the same class.
+
+3. protected
+
+A protected member can be accessed:
+
+Inside the class
+Inside subclasses (derived classes)
+
+But not from outside the class hierarchy.
+
+Example: Protected
+----------------
+class Person {
+    protected name: string;
+
+    constructor(name: string) {
+        this.name = name;
+    }
+}
+
+class Employee extends Person {
+    display() {
+        console.log(this.name); // ✅ Allowed
+    }
+}
+
+const e = new Employee("Mike");
+e.display();
+
+//console.log(e.name); // ❌ Error
+
+Another Example: protected
+--------------------------
+class Example {
+    public a = 1;
+    protected b = 2;
+    private c = 3;
+}
+
+class Child extends Example {
+    test() {
+        console.log(this.a); // ✅
+        console.log(this.b); // ✅
+        console.log(this.c); // ❌
+    }
+}
+
+const obj = new Example();
+
+console.log(obj.a); // ✅
+console.log(obj.b); // ❌
+console.log(obj.c); // ❌
+
+| Modifier      | Same Class | Subclass | Outside Class |
+| -----------        ----------           | --------       | ------------- |
+| `public`        | ✅                | ✅             | ✅             |
+| `protected` | ✅                | ✅             | ❌             |
+| `private`      | ✅                | ❌             | ❌             |
+
+
+Key point:
+
+Without export, a class is not accessible in another file, regardless of public/private/protected.
+-------------------------------------------------------------------------------------------
+
+Example:
+export class Person {
+    name: string = "Mike";
+}
+
+import { Person } from "./person.js";
+
+
+var person = new Person();
+console.log(person.name);
+
+Example:
+export class Person {
+   protected name: string = "Mike";
+}
+
+import { Person } from "./person.js";
+
+class Contact extends Person{
+
+}
+
+var contact = new Contact();
+console.log(contact.name);//Error Outise class cannot access protected
+
+Example
+-------
+export class Person {
+   protected name: string = "Mike";
+}
+
+import { Person } from "./person.js";
+
+class Contact extends Person{
+
+    greet(){
+        console.log(contact.name);
+    }
+
+}
+
+var contact = new Contact();
+contact.greet();
+
+
+
+Example:
+export class Person {
+   private name: string = "Mike";
+}
+import { Person } from "./person.js";
+
+class Contact extends Person{
+
+    greet(){
+        console.log(contact.name);//Error
+    }
+
+}
+
+var contact = new Contact();
+contact.greet();
+
+
+Example: Child class object calls parent class contructor
+--------
+class Animal {
+  constructor(public name: string) {}
+
+  move() {
+    console.log(`${this.name} is moving`);
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log("Woof!");
+  }
+}
+
+const dog = new Dog("Buddy");
+dog.move();
+dog.bark();
+
+Example: super keyword
+----------------------
+class Animal {
+  constructor(public name: string) {}
+
+  move() {
+    console.log(`${this.name} is moving`);
+  }
+}
+
+class Dog extends Animal {
+  constructor(name:string){
+    super(name);
+  }
+  bark() {
+    console.log("Woof!");
+  }
+}
+
+const dog = new Dog("hello");
+dog.move();
+dog.bark();
+
+Example: method overriding
+-------------------------
+class Animal {
+  speak() {
+    console.log("Animal sound");
+  }
+}
+
+class Dog extends Animal {
+  override speak() {
+    console.log("Woof!");
+  }
+}
+
+var dog = new Dog();
+dog.speak();
+
+Example: getters and setters
+----------------------------
+class Person {
+    name!: string;
+
+    
+    get userName(){
+        return this.name;
+    }
+
+    set userName(name:string){
+        this.name=name;
+    }
+
+}
+
+var person = new Person();
+person.userName="mike";
+console.log(person.userName);
+
+
+Example: static member examples
+-----------------------------------
+class MathUtil {
+  static PI = 3.14159;
+
+  static square(x: number) {
+    return x * x;
+  }
+}
+
+console.log(MathUtil.PI);
+console.log(MathUtil.square(4));
+
+Example: abstract class
+-------------------------
+abstract class Shape {
+  abstract area(): number;
+
+  printArea() {
+    console.log(this.area());
+  }
+}
+
+class Circle extends Shape {
+  constructor(private radius: number) {
+    super();
+  }
+
+  area(): number {
+    return Math.PI * this.radius ** 2;
+  }
+}
+
+const c = new Circle(5);
+c.printArea();
+
+Example: Implementing interfaces
+---------------------------------
+interface Vehicle {
+  start(): void;
+}
+
+class Car implements Vehicle {
+  start() {
+    console.log("Car started");
+  }
+}
+
+var car = new Car();
+car.start();
+
+Generics
+--------
+class Box<T> {
+  constructor(public value: T) {}
+}
+
+const stringBox = new Box<string>("Hello");
+const numberBox = new Box<number>(123);
+
+Example: Direct initialization 
+--------------------------------
+class Person {
+  constructor(
+    public name: string,
+    public age: number
+  ) {}
+}
+
+
+var person = new Person("mike",20);
+console.log(person.name);
+console.log(person.age);
+
+
+#####################
+Decorators 
+######################
+
+Decorators in TypeScript are a feature that lets you modify the behavior of classes, methods, properties, or parameters
+
+Their are 4 types of decorators
+
+1. class decorator
+2. property decorator
+3. method decorator
+4. parameter decorator
+
+
+Error Handling
+-------------
+
+1. try...catch...finally
+
+This is the most common way to handle runtime errors.
+
+Example:
+--------
+function divide(a: number, b: number): number {
+  if (b === 0) {
+    throw new Error("Cannot divide by zero");
+  }
+
+  return a / b;
+}
+
+try {
+  const result = divide(10, 0);
+  console.log(result);
+} catch (error) {
+  console.log("Error:", (error as Error).message);
+} finally {
+  console.log("Execution completed");
+}
+
+2. Throwing Custom Errors
+
+You can create your own error class.
+
+Example:
+--------
+class AgeError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "AgeError";
+  }
+}
+
+function register(age: number) {
+  if (age < 18) {
+    throw new AgeError("Age must be at least 18");
+  }
+
+  console.log("Registration successful");
+}
+
+try {
+  register(16);
+} catch (error) {
+  if (error instanceof AgeError) {
+    console.log(error.message);
+  }
+}
+
+
+
+********************************************
+MORE TYPESCRIPT NOTES WILL BE ADDED SOON
+********************************************
+
+Angular Notes
+------------
+
+After installing node.js open command prompt and use the following content to installing angular:
+
+npm install -g @angular/cli
+
+Check : ng version
+
+Creating first angular project
+------------------------------
+ Command: ng new first-angular-app
+
+ Next step: go to first-angular-app folder then open cmd and type code . to open project in vs code
+
+Note:
+tsconfig files: tsconfig files is the configuration file for the TypeScript compiler. It defines how TypeScript code in an Angular application should be compiled, checked, and converted into JavaScript.`
+
+packages file: Contains details about project version and dependencies
+
+angular.json: contains the configuration for Angular CLI commands such as:
+
+ng serve
+ng build
+ng test
+
+.editorconfig: Is a configuration file that helps maintain consistent coding styles across different editors and IDEs by defining rules such as indentation, line endings, character encoding, and whitespace handling.
+
+.gitignore tells Git which files and folders should not be tracked or committed to the repository.
+
+Easy Summary:
+
+package.json → What the project uses
+tsconfig.json → How TypeScript compiles
+angular.json → How Angular builds/runs
+.editorconfig → How code should look and be formatted
+
+src folder is the one where most of the developers will spend time 
+
+in src you will see styles.css - this is global css. These css rules are applied to web pages
+index.html - First root html page visitors will access when they visit you app(Angular injects application into this)
+main.ts is the entry point of an Angular application. When your app starts, execution begins from this file.
+
+assets folder: where we store images
+
+
+###################
+LAB TASK 1
+###################
+
+Creating First Custom Component Manually
+_________________________________________
+
+Create Following 3 files:
+
+a. header.html
+b. header.css
+c. header.ts
+
+header.ts
+---------
+import { Component } from "@angular/core";
+
+@Component(
+    {
+        selector:'app-header',
+        standalone:true,
+        templateUrl:'./header.html',
+        styleUrl:'./header.css'
+    }
+)
+export class HeaderComponent{
+
+}
+
+header.html
+____________
+<header>
+    TaskManager
+</header>
+
+header.css
+__________
+
+empty as of now will add css further
+---------------------------------------------
+
+Very Important: AppComponent is the parent in the tree structure(This is a defined rule by Angular)
+
+App (app-root)
+│
+├── HeaderComponent (app-header)
+
+So we have to define HeaderComponent inside app.ts or else app.ts will not be able to access header component.
+
+app.ts
+-------
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet,HeaderComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+}
+
+-----------------------------------------------
+
+Start the server: ng serve
+Enter the url: http://localhost:4200
+
+################
+LAB TASK 2
+################
+
+update header.html
+-------------------
+<header>
+    <img src="\task-management-logo.png" alt="Task Manager logo"/>
+    <h1>TaskManager</h1>
+    <p>End to End Task Manager Software</p>
+</header>
+
+🧠 Your current setup
+
+You have: INSIDE angular.json
+
+"assets": [
+  {
+    "glob": "**/*",
+    "input": "public"
+  }
+]
+
+👉 This means:
+
+Everything inside public/ is served as /
+
+So:
+
+public/task-management-logo.png
+→ /task-management-logo.png
+✅ If you move images to src/assets/
+
+You must update angular.json like this:
+
+"assets": [
+  {
+    "glob": "**/*",
+    "input": "src/assets",
+    "output": "assets"
+  }
+]
+update header.css file
+----------------------
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background-color: #1976d2;
+  color: white;
+}
+
+header img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+header h1 {
+  font-size: 22px;
+  margin: 0;
+}
+
+header p {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+Update app.css with this
+------------------------
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+####################
+LAB TASK 3
+####################
+
+Organize your components
+-----------------------
+
+step 1: Create a folder 'header'	
+Step 2: move header.ts, header.html, header.css to it
+Step 3: Chech import statement inside app.ts: import { HeaderComponent } from './header/header';
+
+#################
+LAB TASK 4
+#################
+
+Create component using Angular CLI
+
+ng generate component user
+
+or
+
+ng g c user
+
+And you will see the following files getting created
+
+CREATE src/app/user/user.spec.ts ---> Used for automated testing, delete for now(We will discuss in my latter lecture)
+CREATE src/app/user/user.ts
+CREATE src/app/user/user.css
+CREATE src/app/user/user.html
+
+#######################
+LAB TASK 5
+#######################
+
+Note: AppComponent TREE STRUCTURE
+
+AppComponent (app-root)---->index.html
+│
+├── HeaderComponent   (<app-header>)
+│
+└── UserComponent     (<app-user>)
+
+
+update user.html
+-------------
+<div>
+    <button>
+        <img src="" />
+        <span>NAME</span>
+    </button>
+</div>
+
+update user.css
+---------------
+div {
+  width: 220px;
+  height: 100vh;
+  background-color: #1e1e2f;
+  padding: 10px;
+}
+
+button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+}
+
+button:hover {
+  background-color: #2c2c44;
+}
+
+img {
+  width: 20px;
+  height: 20px;
+}
+
+span {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+update app.ts
+-------------
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent,UserComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+}
+
+
+update app.html
+---------------
+<app-header></app-header>
+<app-user></app-user>	
+
+################
+LAB TASK 6
+################
+
+Interpolation Concept: Data From Typescript to html
+---------------------------------------------------
+
+Step 1:Create this in app/src
+
+export const DUMMY_USERS = [
+    {
+        id:'u1',
+        name:'mike',
+        avatar:'user-1.jpg'
+    },
+    {
+        id:'u2',
+        name:'adam',
+        avatar:'user-2.jpg'
+    },
+    {
+        id:'u3',
+        name:'stallin',
+        avatar:'user-3.jpg'
+    },
+    {
+        id:'u4',
+        name:'sam',
+        avatar:'user-4.jpg'
+    }
+
+]
+
+Step 2: update user.ts
+---------------------
+
+import { Component } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length);
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+
+  selectedUsers = DUMMY_USERS[randomIndex];
+
+}
+
+Step 3: user.html
+----------------
+<div>
+    <button>
+        <img src="" />
+        <span>{{ selectedUsers.name }}</span>
+    </button>
+</div>
+
+################
+LAB TASK 7
+################
+
+Property Binding
+---------------
+
+Step 1: Add avatars to public/users folder 
+
+Step 2: 
+export const DUMMY_USERS = [
+    {
+        id:'u1',
+        name:'mike',
+        avatar:'users/user-1.jpg'
+    },
+    {
+        id:'u2',
+        name:'adam',
+        avatar:'users/user-2.jpg'
+    },
+    {
+        id:'u3',
+        name:'stallin',
+        avatar:'user-3.jpg'
+    },
+    {
+        id:'u4',
+        name:'sam',
+        avatar:'user-4.jpg'
+    }
+
+]
+
+Step 3:Do property binding here
+<div>
+    <button>
+        <img [src]="selectedUsers.avatar" [alt]="selectedUsers.name" />
+        <span>{{ selectedUsers.name }}</span>
+    </button>
+</div>
+
+#############
+LAB TASK 8
+#############
+
+Step 1:
+-------
+export const DUMMY_USERS = [
+    {
+        id:'u1',
+        name:'mike',
+        avatar:'user-1.jpg'
+    },
+    {
+        id:'u2',
+        name:'adam',
+        avatar:'user-2.jpg'
+    },
+    {
+        id:'u3',
+        name:'stallin',
+        avatar:'user-3.jpg'
+    },
+    {
+        id:'u4',
+        name:'sam',
+        avatar:'user-4.jpg'
+    }
+
+]
+
+Step 2:
+---------
+import { Component } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length);
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+
+  selectedUsers = DUMMY_USERS[randomIndex];
+
+}
+
+Step 3:GIVING PATH DIRECTLY IN user.html file
+------------------
+<div>
+    <button>
+        <img [src]="'users/'+ selectedUsers.avatar" [alt]="selectedUsers.name" />
+        <span>{{ selectedUsers.name }}</span>
+    </button>
+</div>
+
+###################
+LAB TASK 9
+###################
+
+Step 1:
+------
+export const DUMMY_USERS = [
+    {
+        id:'u1',
+        name:'mike',
+        avatar:'user-1.jpg'
+    },
+    {
+        id:'u2',
+        name:'adam',
+        avatar:'user-2.jpg'
+    },
+    {
+        id:'u3',
+        name:'stallin',
+        avatar:'user-3.jpg'
+    },
+    {
+        id:'u4',
+        name:'sam',
+        avatar:'user-4.jpg'
+    }
+
+]
+
+Step 2:create getter method in typescript(user.ts)
+-------
+
+import { Component } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random()*DUMMY_USERS.length);
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+
+  selectedUsers = DUMMY_USERS[randomIndex];
+
+  get imagePath(){
+    return 'users/'+this.selectedUsers.avatar;
+  }
+
+}
+
+Step 3: since its getter donot write imagePath(). Instead you can directly give imagePath without ().
+<div>
+    <button>
+        <img [src]="imagePath" [alt]="selectedUsers.name" />
+        <span>{{ selectedUsers.name }}</span>
+    </button>
+</div>
+
+#######################
+LAB TASK 10
+#####################
+
+Listening to Event With Event Binding(HTML to typescript)
+--------------------------------------
+
+Step 1:
+-------
+<div>
+    <button (click)="onSelectedUser()">
+        <img [src]="imagePath" [alt]="selectedUsers.name" />
+        <span>{{ selectedUsers.name }}</span>
+    </button>
+</div>
+
+Step 2: add onDelectUser()
+-------
+import { Component } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  
+onSelectedUser() {
+    console.log('Clicked!!');
+  }
+
+  selectedUsers = DUMMY_USERS[randomIndex];
+
+  get imagePath() {
+    return 'users/' + this.selectedUsers.avatar;
+  }
+
+}
+
+#######################
+LAB TASK 11
+#####################
+
+Managing state and changing data
+------------------------------
+Step 1: user.html
+---------------
+<div>
+    <button (click)="onSelectedUser()">
+        <img [src]="imagePath" [alt]="selectedUsers.name" />
+        <span>{{ selectedUsers.name }}</span>
+    </button>
+</div>
+
+Step 2: update user.ts
+----------------------
+import { Component } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  onSelectedUser() {
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUsers = DUMMY_USERS[randomIndex];
+  }
+
+  selectedUsers = DUMMY_USERS[randomIndex];
+
+  get imagePath() {
+    return 'users/' + this.selectedUsers.avatar;
+  }
+
+}
+
+Note: 
+What is zone.js in Angular?
+
+zone.js is a library that helps Angular know when something has changed so it can automatically update the UI.
+
+-----------------------------------------------------------
+#######################
+LAB TASK 12
+#####################
+
+Signals in Angular
+---------------------
+
+Option 1: zone.js is a library (Angular 2) that helps Angular know when something has changed so it can automatically update the UI.
+
+Button Click / HTTP Response / Timer
+                ↓
+            Zone.js
+                ↓
+    Angular Change Detection
+                ↓
+Checks component tree
+                ↓
+Updates UI where values changed
+
+Option 2: Signals(Angular 16 and above)
+--------------------------------------
+Think of a signal as a variable that Angular automatically tracks. When the signal value changes, Angular knows exactly what needs to be updated in the UI.
+
+count signal changed
+        ↓
+Angular knows which component/template uses count
+        ↓
+Updates only that part of the UI
+
+In the context of UI updates and change detection, Signals are generally more efficient than the traditional Zone.js-based approach.
+
+
+Step 1: user.ts - Use signals
+-------------------
+
+import { Component,computed,signal } from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  selectedUsers =signal(DUMMY_USERS[randomIndex]);
+  imagePath = computed(() =>'users/'+ this.selectedUsers().avatar)
+  onSelectedUser() {
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUsers.set(DUMMY_USERS[randomIndex]);
+  }
+
+  
+
+  // get imagePath() {
+  //   return 'users/' + this.selectedUsers.avatar;
+  // }
+
+}
+
+Step 2:Update user.html file
+---------------------------
+<div>
+    <button (click)="onSelectedUser()">
+        <img [src]="imagePath()" [alt]="selectedUsers().name" />
+        <span>{{ selectedUsers().name }}</span>
+    </button>
+</div>
+
+#######################
+LAB TASK 13
+#####################
+
+step 1:update user.ts
+---------------
+import { Component} from '@angular/core';
+import { DUMMY_USERS } from '../dummy-users';
+
+const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  selectedUsers =DUMMY_USERS[randomIndex];
+  
+  onSelectedUser() {
+    const randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUsers = DUMMY_USERS[randomIndex];
+  }
+
+  
+
+  get imagePath() {
+    return 'users/' + this.selectedUsers.avatar;
+  }
+
+}
+
+step 2:update app.html
+----------------
+<app-header></app-header>
+
+<main>
+  <ul id="users">
+    <ul>
+        <app-user />
+    </ul>
+     <ul>
+        <app-user />
+    </ul>
+     <ul>
+        <app-user />
+    </ul>
+  </ul>
+
+</main>
+
+#######################
+LAB TASK 14 - Component Inputs from another component
+#####################
+
+app.ts(Make DUMMY_USERS available)----DUMMY_USERS--->app.html-->[avatar] gets image url this from app.ts--->user.ts--->user.html
+
+@Input() allows a parent component to pass data to a child component. The child component receives that data and stores it in a property.
+
+
+Step 1: update app.ts
+--------------------
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+import { DUMMY_USERS } from './dummy-users';
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent,UserComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+  users = DUMMY_USERS;
+}
+
+
+Step 2:Update app.html
+-----------------------
+<app-header></app-header>
+
+<main>
+  <ul id="users">
+    <ul>
+        <app-user [avatar]="users[0].avatar" [name]="users[0].name"/>
+    </ul>
+     <ul>
+        <app-user [avatar]="users[1].avatar" [name]="users[1].name"/>
+    </ul>
+     <ul>
+        <app-user [avatar]="users[2].avatar" [name]="users[2].name"/>
+    </ul>
+  </ul>
+
+</main>
+
+Step 3: update user.ts
+----------------------
+import { Component, Input} from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  
+  @Input() avatar!:string;
+  @Input() name!:string;
+  
+  onSelectedUser() {
+    
+  }
+
+  
+
+  get imagePath() {
+    return 'users/'+ this.avatar;
+  }
+
+}
+
+Step 4: user.html
+------------------
+<div>
+    <button (click)="onSelectedUser()">
+        <img [src]="imagePath" [alt]="name" />
+        <span>{{ name }}</span>
+    </button>
+</div>
+
+
+#####################
+LAB TASK 15
+#####################
+ avatar!:string; --> Problem Using !
+
+Step 1: user.ts
+----------------
+import { Component, Input} from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  
+  @Input({required:true}) avatar!:string;
+  @Input({required:true}) name!:string;
+  
+  onSelectedUser() {
+    
+  }
+
+  
+
+  get imagePath() {
+    return 'users/'+ this.avatar;
+  }
+
+}
+
+Step 2: app.html
+----------------
+<app-header></app-header>
+
+<main>
+  <ul id="users">
+    <ul>
+        <app-user [avatar]="users[0].avatar" [name]="users[0].name"/>
+    </ul>
+     <ul>
+        <app-user [avatar]="users[1].avatar" [name]="users[1].name"/>
+    </ul>
+     <ul>
+        <app-user [avatar]="users[2].avatar" /> --->YOU WILL SEE ERROR AFTER USING REQUIRED:TRUE IN USER.TS
+    </ul>
+  </ul>
+
+</main>
+
+
+#####################
+LAB TASK 16
+#####################
+
+USING SIGNAL INPUTS
+-------------------
+
+step 1: update user.ts with the following code:
+
+import { Component, computed, input, Input} from '@angular/core';
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  
+  // @Input({required:true}) avatar!:string;
+  // @Input({required:true}) name!:string;
+
+  avatar=input.required<string>();
+  name=input.required<string>();
+
+  imagePath = computed(()=>{
+    return 'users/'+ this.avatar;
+  });
+
+  onSelectedUser() {
+    
+  }
+
+  
+
+  // get imagePath() {
+  //   return 'users/'+ this.avatar;
+  // }
+
+}
+
+step 2: update user.html
+------------------------
+<div>
+    <button (click)="onSelectedUser()">
+        <img [src]="imagePath()" [alt]="name()" />
+        <span>{{ name() }}</span>
+    </button>
+</div>
+
+Efficiency of the application will improve. However this will work only in Angular 16 and above. For older versions use decorator like 'input'. As of now many companies are not using signals. hence in this course we will continue to use decorators
+
+#####################
+LAB TASK 17
+#####################
+
+Custom Events - Output decorator
+--------------
+
+UserComponent (@Output() - emit value ) ---> app.html ( value   (select)="onSelectUser($event)" ) --> app.ts (onSelectUser(id:string))
+
+Note: $event is an Angular template variable that contains the event object generated by a user action
+
+step 1: Update user.ts
+-----------------------
+
+import { Component, computed, EventEmitter, input, Input, Output} from '@angular/core';
+import { required } from '@angular/forms/signals';
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  
+  @Input({required:true}) id!:string;
+  @Input({required:true}) avatar!:string;
+  @Input({required:true}) name!:string;
+  @Output() select = new EventEmitter();
+
+  // avatar=input.required<string>();
+  // name=input.required<string>();
+
+  // imagePath = computed(()=>{
+  //   return 'users/'+ this.avatar;
+  // });
+
+  onSelectedUser() {
+    this.select.emit(this.id);
+  }
+
+  
+
+  get imagePath() {
+    return 'users/'+ this.avatar;
+  }
+
+}
+
+step 2: update app.html
+----------------------
+<app-header></app-header>
+
+<main>
+  <ul id="users">
+    <ul>
+      <app-user 
+        [id]="users[0].id" 
+        [avatar]="users[0].avatar" 
+        [name]="users[0].name" 
+        (select)="onSelectUser($event)"/>
+    </ul>
+    <ul>
+      <app-user 
+        [id]="users[1].id" 
+        [avatar]="users[1].avatar" 
+        [name]="users[1].name" 
+        (select)="onSelectUser($event)"/>
+    </ul>
+    <ul>
+      <app-user 
+        [id]="users[2].id" 
+        [avatar]="users[2].avatar" 
+        [name]="users[2].name" 
+        (select)="onSelectUser($event)"/>
+    </ul>
+  </ul>
+
+</main>
+
+step 3: update app.ts
+--------------------
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+import { DUMMY_USERS } from './dummy-users';
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent,UserComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+  users = DUMMY_USERS;
+
+  onSelectUser(id:string){
+    console.log("The id is: "+id);
+  }
+}
+
+#####################
+LAB TASK 18
+#####################
+
+Instead of using @Output() decorator we will use output() function. In modern Angular (v16+), Angular introduced the output() function as an alternative to the traditional @Output() decorator. This is not a signal. Just improves performance
+
+Step 1: update user.ts
+
+import { Component, computed, EventEmitter, input, Input, output, Output} from '@angular/core';
+import { required } from '@angular/forms/signals';
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  
+  @Input({required:true}) id!:string;
+  @Input({required:true}) avatar!:string;
+  @Input({required:true}) name!:string;
+  //@Output() select = new EventEmitter();
+
+  select = output<string>();
+
+  // avatar=input.required<string>();
+  // name=input.required<string>();
+
+  // imagePath = computed(()=>{
+  //   return 'users/'+ this.avatar;
+  // });
+
+  onSelectedUser() {
+    this.select.emit(this.id);
+  }
+
+  
+
+  get imagePath() {
+    return 'users/'+ this.avatar;
+  }
+
+}
+
+Rest all remains the same
+
+
+#####################
+LAB TASK 19
+#####################
+
+Layout Update:
+
+Step 1: Update app.css with the additional css 
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  align-items: flex-start;
+}
+
+.tasks {
+  flex: 1;
+  background: white;
+  min-height: 400px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+Step 2: Update. app.html
+<app-header></app-header>
+
+<main>
+  <div class="content">
+    <ul id="users">
+      <ul>
+        <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [id]="users[1].id" [avatar]="users[1].avatar" [name]="users[1].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [id]="users[2].id" [avatar]="users[2].avatar" [name]="users[2].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+    </ul>
+
+    <div class="tasks">
+      <h2>Task Here</h2>
+    </div>
+
+  </div>
+
+</main>
+
+#####################
+LAB TASK 20
+#####################
+
+replace <h2>Task Here</h2> -----> with username dynamically
+------------------------------------------------------------
+Note: @Input() allows a parent component to pass data to a child component.
+
+create Tasks Component----> Tasks.ts (add @Input() to receive input) ---->Input data of Tasks.ts display on Tasks.html-->app.html(add  <app-tasks/>-----> app.ts (find username based on UserId) --> app.html
+
+
+Step1: create tasks component
+ng g c tasks
+
+Step 2: use @Input() in tasks.ts to recieve input from app.ts
+
+import { Component, Input } from '@angular/core';
+import { required } from '@angular/forms/signals';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+  @Input({required:true}) name!:string;
+}
+
+Step 3: tasks.html
+<p>{{name}}</p>
+
+step 4: app.ts ( will supply data to app.html ----> @Input in tasks.ts ---> tasks.html---->finally <app-tasks> display data)
+
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+import { DUMMY_USERS } from './dummy-users';
+import { TasksComponent } from "./tasks/tasks";
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent, UserComponent, TasksComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+  users = DUMMY_USERS;
+  selectedUserId:string='u1';
+
+  get selectedUser(){
+    return this.users.find((users) => users.id === this.selectedUserId)!;
+  }
+
+  onSelectUser(id:string){
+    this.selectedUserId=id;
+  }
+}
+
+Step 5: update app.html
+-----------------------
+<app-header></app-header>
+
+<main>
+  <div class="content">
+    <ul id="users">
+      <ul>
+        <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [id]="users[1].id" [avatar]="users[1].avatar" [name]="users[1].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [id]="users[2].id" [avatar]="users[2].avatar" [name]="users[2].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+    </ul>
+
+    <div class="tasks">
+      <h2><app-tasks [name]="selectedUser.name"/></h2>
+    </div>
+
+  </div>
+
+</main>
+
+
+#####################
+LAB TASK 21
+#####################
+
+Working with undefined values (Using optional(?) instead of Trust Me Operator(!)
+
+Sometimes your code might return data or undefined value
+
+Step 1: Update task.ts 
+import { Component, Input } from '@angular/core';
+import { required } from '@angular/forms/signals';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+  @Input() name?:string;  // @Input() name: string | undefined;
+}
+
+Step 2: update app.html
+<app-header></app-header>
+
+<main>
+  <div class="content">
+    <ul id="users">
+      <ul>
+        <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [id]="users[1].id" [avatar]="users[1].avatar" [name]="users[1].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [id]="users[2].id" [avatar]="users[2].avatar" [name]="users[2].name"
+          (select)="onSelectUser($event)" />
+      </ul>
+    </ul>
+
+    <div class="tasks">
+      <h2><app-tasks [name]="selectedUser?.name"/></h2>
+    </div>
+
+  </div>
+
+</main>
+
+
+Step 3: app.ts
+--------------
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+import { DUMMY_USERS } from './dummy-users';
+import { TasksComponent } from "./tasks/tasks";
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent, UserComponent, TasksComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+  users = DUMMY_USERS;
+  selectedUserId:string='u1';
+
+  get selectedUser(){
+    return this.users.find((users) => users.id === this.selectedUserId);
+  }
+
+  onSelectUser(id:string){
+    this.selectedUserId=id;
+  }
+}
+
+
+#####################
+LAB TASK 22
+#####################
+
+Using Object instead of Multiple variables in typescript
+
+Step 1: Update UserComponent and make code less lengthy
+-------------------------------------------------------
+import { Component, computed, EventEmitter, input, Input, output, Output} from '@angular/core';
+import { required } from '@angular/forms/signals';
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+  
+  // @Input({required:true}) id!:string;
+  // @Input({required:true}) avatar!:string;
+  // @Input({required:true}) name!:string;
+
+  @Input({required:true}) user!:{
+    id:string,
+    avatar:string,
+    name:string
+  }
+  //@Output() select = new EventEmitter();
+
+  select = output<string>();
+
+  // avatar=input.required<string>();
+  // name=input.required<string>();
+
+  // imagePath = computed(()=>{
+  //   return 'users/'+ this.avatar;
+  // });
+
+  onSelectedUser() {
+    this.select.emit(this.user.id);
+  }
+
+  
+
+  get imagePath() {
+    return 'users/'+ this.user.avatar;
+  }
+
+}
+
+
+Step 2: Update user.html
+---------------------------
+<div>
+    <button (click)="onSelectedUser()">
+        <img [src]="imagePath" [alt]="user.name" />
+        <span>{{ user.name }}</span>
+    </button>
+</div>
+
+Step 3: update app.html
+-------------------------
+<app-header></app-header>
+
+<main>
+  <div class="content">
+    <ul id="users">
+      <ul>
+        <app-user [user]="users[0]"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [user]="users[1]"
+          (select)="onSelectUser($event)" />
+      </ul>
+      <ul>
+        <app-user [user]="users[2]"
+          (select)="onSelectUser($event)" />
+      </ul>
+    </ul>
+
+    <div class="tasks">
+      <h2><app-tasks [name]="selectedUser?.name"/></h2>
+    </div>
+
+  </div>
+
+</main>
+
+#####################
+LAB TASK 23
+#####################
+
+using type for USER in user component
+-------------------------------------
+
+Step 1: Update user.ts
+------------------------
+import { Component, computed, EventEmitter, input, Input, output, Output } from '@angular/core';
+import { required } from '@angular/forms/signals';
+
+type User = {
+  id: string,
+  avatar: string,
+  name: string
+}
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+
+  // @Input({required:true}) id!:string;
+  // @Input({required:true}) avatar!:string;
+  // @Input({required:true}) name!:string;
+
+  @Input({ required: true }) user!: User;
+  //@Output() select = new EventEmitter();
+
+  select = output<string>();
+
+  // avatar=input.required<string>();
+  // name=input.required<string>();
+
+  // imagePath = computed(()=>{
+  //   return 'users/'+ this.avatar;
+  // });
+
+  onSelectedUser() {
+    this.select.emit(this.user.id);
+  }
+
+
+
+  get imagePath() {
+    return 'users/' + this.user.avatar;
+  }
+
+}
+
+#####################
+LAB TASK 24
+#####################
+
+Using interface instead of type
+--------------------------------
+
+Step 1: Update user.ts
+-----------------------
+import { Component, computed, EventEmitter, input, Input, output, Output } from '@angular/core';
+import { required } from '@angular/forms/signals';
+
+// type User = {
+//   id: string,
+//   avatar: string,
+//   name: string
+// }
+
+interface User {
+  id: string,
+  avatar: string,
+  name: string
+}
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+
+  // @Input({required:true}) id!:string;
+  // @Input({required:true}) avatar!:string;
+  // @Input({required:true}) name!:string;
+
+  @Input({ required: true }) user!: User;
+  //@Output() select = new EventEmitter();
+
+  select = output<string>();
+
+  // avatar=input.required<string>();
+  // name=input.required<string>();
+
+  // imagePath = computed(()=>{
+  //   return 'users/'+ this.avatar;
+  // });
+
+  onSelectedUser() {
+    this.select.emit(this.user.id);
+  }
+
+
+
+  get imagePath() {
+    return 'users/' + this.user.avatar;
+  }
+
+}
+
+Note: when you expect inheritance use interface if that is not your requirement then use type. For Object structure interface is best use case. 
+
+#####################
+LAB TASK 25
+#####################
+
+Dynamic List Content: @for() - was added in ng version 17
+-----------------------
+
+Step 1: update app.html
+--------------------------
+<app-header></app-header>
+
+<main>
+  <div class="content">
+
+    <ul id="users">
+      @for (user of users; track user.id){
+          <ul>
+            <app-user [user]="user"
+              (select)="onSelectUser($event)" />
+        </ul>
+      }
+      
+     
+    </ul>
+
+    <div class="tasks">
+      <h2><app-tasks [name]="selectedUser?.name"/></h2>
+    </div>
+
+  </div>
+
+</main>
+
+Note:  track user.id --> Should be unique identifier which will help you fetch record
+
+
+#####################
+LAB TASK 26 --@if , @else() - was added in ng version 17
+#####################
+
+Output Conditional statement
+-------------------------------
+
+Step 1: update app.ts
+----------------------
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+import { DUMMY_USERS } from './dummy-users';
+import { TasksComponent } from "./tasks/tasks";
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent, UserComponent, TasksComponent],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+  users = DUMMY_USERS;
+  selectedUserId?:string;
+
+  get selectedUser(){
+    return this.users.find((users) => users.id === this.selectedUserId);
+  }
+
+  onSelectUser(id:string){
+    this.selectedUserId=id;
+  }
+}
+
+Step 2: Update app.html
+-------------------------
+<app-header></app-header>
+
+<main>
+  <div class="content">
+
+    <ul id="users">
+      @for (user of users; track user.id){
+          <ul>
+            <app-user [user]="user"
+              (select)="onSelectUser($event)" />
+        </ul>
+      }
+      
+     
+    </ul>
+
+    <div class="tasks">
+      @if(selectedUser){
+        <h2><app-tasks [name]="selectedUser.name"/></h2>
+      }@else {
+        <p>Select the user to get details!!</p>
+      }
+      
+    </div>
+
+  </div>
+
+</main>
+
+
+#####################
+LAB TASK 27 - workgin with old versions
+#####################
+
+Legacy approach ngFor and ngIf
+-------------------------------
+Note: to use *ngFor add that to app.ts  as shown in step 1
+
+step 1:*ngFor add that to app.ts
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+import { DUMMY_USERS } from './dummy-users';
+import { TasksComponent } from "./tasks/tasks";
+import { NgFor } from '@angular/common';
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent, UserComponent, TasksComponent, NgFor],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+  users = DUMMY_USERS;
+  selectedUserId?:string;
+
+  get selectedUser(){
+    return this.users.find((users) => users.id === this.selectedUserId);
+  }
+
+  onSelectUser(id:string){
+    this.selectedUserId=id;
+  }
+}
+
+Step 2: update app.html
+<app-header></app-header>
+
+<main>
+  <div class="content">
+
+    <ul id="users" >
+      <!-- @for (user of users; track user.id){ -->
+        <ul *ngFor="let user of users">
+            <app-user [user]="user"
+              (select)="onSelectUser($event)" />
+        </ul>
+      <!-- } -->
+      
+     
+    </ul>
+
+    <div class="tasks">
+      @if(selectedUser){
+        <h2><app-tasks [name]="selectedUser.name"/></h2>
+      }@else {
+        <p>Select the user to get details!!</p>
+      }
+      
+    </div>
+
+  </div>
+
+</main>
+
+
+
+#####################
+LAB TASK 28 - workgin with old versions
+#####################
+
+using *ngIf
+
+Step 1: add NgIf to app.ts
+----------------------------
+import { Component, signal } from '@angular/core';
+import { HeaderComponent } from './header/header';
+import { UserComponent } from './user/user';
+import { DUMMY_USERS } from './dummy-users';
+import { TasksComponent } from "./tasks/tasks";
+import { NgFor, NgIf } from '@angular/common';
+
+
+@Component({
+  selector: 'app-root',
+  imports: [HeaderComponent, UserComponent, TasksComponent, NgFor, NgIf],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('first-angular-app');
+  users = DUMMY_USERS;
+  selectedUserId?:string;
+
+  get selectedUser(){
+    return this.users.find((users) => users.id === this.selectedUserId);
+  }
+
+  onSelectUser(id:string){
+    this.selectedUserId=id;
+  }
+}
+
+Step 2: Update app.html
+-----------------------
+<app-header></app-header>
+
+<main>
+  <div class="content">
+
+    <ul id="users" >
+      <!-- @for (user of users; track user.id){ -->
+        <ul *ngFor="let user of users">
+            <app-user [user]="user"
+              (select)="onSelectUser($event)" />
+        </ul>
+      <!-- } -->
+      
+     
+    </ul>
+
+    <div class="tasks">
+      <!-- @if(selectedUser){ -->
+        <h2><app-tasks *ngIf="selectedUser; else fallBack" [name]="selectedUser!.name"/></h2>
+      <!-- }@else { -->
+       <ng-template #fallBack>
+          <p>Select the user to get details!!</p>
+       </ng-template>
+        
+      <!-- } -->
+      
+    </div>
+
+  </div>
+
+</main>
+
+
+#####################
+LAB TASK 29 - Adding features to tasks component
+#####################
+
+Step 1: tasks.html
+
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button>Add Task</button>
+    </header>
+</div>
+
+step 2: add css style to tasks.css
+button{
+  width: 15%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  border: none;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  border-radius: 6px;
+  background-color: #4309f0;
+}
+
+#####################
+LAB TASK 30 - Adding new component inside tasks
+#####################
+
+Step 1: Add new component inside 
+
+ng g c tasks/task
+
+Step 2: Add selector to Tasks.html
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button>Add Task</button>
+    </header>
+</div>
+
+<ul>
+   <li>
+        <app-task></app-task>
+   </li>
+   <li>
+        <app-task></app-task>
+   </li>
+   <li>
+        <app-task></app-task>
+   </li>
+
+</ul>
+
+
+Step 3: add following html to task.html
+-----------------------------------
+<article>
+    <h2>Task Title</h2>
+    <time>Time</time>
+    <p>Summary</p>
+    <P class="actions">
+        <button>Complete</button>
+    </P>
+</article>
+
+
+
+Step 4: add to Tasks.ts -- TaskComponent
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button>Add Task</button>
+    </header>
+</div>
+
+<app-task></app-task>
+
+#####################
+LAB TASK 31 - Adding new features to Task Component Continuation
+#####################
+
+Step 1: Add tasks Array
+----------------------
+import { Component, Input } from '@angular/core';
+import { required } from '@angular/forms/signals';
+import { TaskComponent } from './task/task';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [TaskComponent],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+  @Input ({required:true}) userId!:string;
+  @Input({required:true}) name!:string;
+
+  tasks = [
+    {
+      id:'t1',
+      userId:'u1',
+      title:'Adding login feature',
+      summary:'login with otp, gmail and username',
+      dueDate: '2026-06-28'
+    },
+     {
+      id:'t2',
+      userId:'u2',
+      title:'Adding upload images',
+      summary:'Per product max 15 images to be uploaded',
+      dueDate: '2026-06-29'
+    },
+    {
+      id:'t3',
+      userId:'u1',
+      title:'Adding upload product description',
+      summary:'add product description',
+      dueDate: '2026-06-29'
+    }
+  ];
+
+  get selectedUserTasks(){
+    return this.tasks.filter((t)=> t.userId===this.userId);
+  }
+}
+
+Step 2: Supply UserId from app.html to tasks.ts
+----------------------------------------------------
+<app-header></app-header>
+
+<main>
+  <div class="content">
+
+    <ul id="users" >
+      @for (user of users; track user.id){
+        <ul >
+            <app-user [user]="user"
+              (select)="onSelectUser($event)" />
+        </ul>
+      }
+      
+     
+    </ul>
+
+    <div class="tasks">
+      @if(selectedUser){
+        <h2><app-tasks [userId]="selectedUser!.id" [name]="selectedUser!.name"/></h2>
+      }@else {
+      
+          <p>Select the user to get details!!</p>
+    
+        
+      }
+      
+    </div>
+
+  </div>
+
+</main>
+
+Step 3: @for add that to tasks.html
+-------------------------------
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button>Add Task</button>
+    </header>
+</div>
+
+<ul>
+@for(task of selectedUserTasks; track task.id){
+
+   <li>
+        <app-task></app-task>
+   </li>
+}
+</ul>
+
+#####################
+LAB TASK 32 - Adding new features to Task Component Continuation
+#####################
+
+Step 1: update task.ts
+-----------------------
+import { Component, Input } from '@angular/core';
+
+interface Task{
+  id:string,
+  userId:string,
+  title:string,
+  summary:string,
+  dueDate:string
+}
+
+@Component({
+  selector: 'app-task',
+  imports: [],
+  templateUrl: './task.html',
+  styleUrl: './task.css',
+})
+export class TaskComponent {
+
+  @Input({required:true}) task!:Task;
+  
+}
+
+
+Step 2: update tasks.html
+----------------------------
+
+
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button>Add Task</button>
+    </header>
+</div>
+
+<ul>
+@for(task of selectedUserTasks; track task.id){
+
+   <li>
+        <app-task [task]="task"></app-task>
+   </li>
+}
+</ul>
+
+Step 3: update task.html
+--------------------------
+<article>
+    <h2>{{task.title}}</h2>
+    <time>{{task.dueDate}}</time>
+    <p>{{task.summary}}</p>
+    <P class="actions">
+        <button>Complete</button>
+    </P>
+</article>
+
+#####################
+LAB TASK 33 - Creating Model Layer 
+#####################
+
+Step 1: create user.model.ts - keep yout dto here
+------------------------------
+export interface User {
+  id: string,
+  avatar: string,
+  name: string
+}
+
+Step 2: import user in user.ts
+-----------------------------
+import { Component, computed, EventEmitter, input, Input, output, Output } from '@angular/core';
+import { required } from '@angular/forms/signals';
+import {User} from './user.model';
+
+@Component({
+  selector: 'app-user',
+  imports: [],
+  templateUrl: './user.html',
+  styleUrl: './user.css',
+})
+export class UserComponent {
+
+  // @Input({required:true}) id!:string;
+  // @Input({required:true}) avatar!:string;
+  // @Input({required:true}) name!:string;
+
+  @Input({ required: true }) user!: User;
+  //@Output() select = new EventEmitter();
+
+  select = output<string>();
+
+  // avatar=input.required<string>();
+  // name=input.required<string>();
+
+  // imagePath = computed(()=>{
+  //   return 'users/'+ this.avatar;
+  // });
+
+  onSelectedUser() {
+    this.select.emit(this.user.id);
+  }
+
+
+
+  get imagePath() {
+    return 'users/' + this.user.avatar;
+  }
+
+}
+
+also, for Task do the same thing
+------------------------------
+
+Step 1: create task.model.ts
+--------------------------------
+export interface Task{
+  id:string,
+  userId:string,
+  title:string,
+  summary:string,
+  dueDate:string
+}
+
+Step 2: Import in task.ts
+-------------------------
+import { Component, Input } from '@angular/core';
+import { Task } from './task.model';
+
+
+
+@Component({
+  selector: 'app-task',
+  imports: [],
+  templateUrl: './task.html',
+  styleUrl: './task.css',
+})
+export class TaskComponent {
+
+  @Input({required:true}) task!:Task;
+  
+}
+
+#####################
+LAB TASK 34 - Implement Complete Button feature
+#####################
+
+@Output() is an Angular property decorator used to send data or notify events from a child component to its parent component.
+
+Step 1: Update complete button feature in task.html
+
+Note:
+AppComponent (Parent)
+        │
+        ▼
+UserComponent (Child)
+
+The parent passes data to the child using @Input().
+
+The child sends data back to the parent using @Output().
+
+Here task.html (click())---> task.ts (@Output (to supply data to parent) ---> tasks.html ($event captures data)--->tasks.ts(onCompleteTasks())
+
+Step 1: Update task.html
+-------------------------
+<article>
+    <h2>{{task.title}}</h2>
+    <time>{{task.dueDate}}</time>
+    <p>{{task.summary}}</p>
+    <P class="actions">
+        <button (click)="onCompleteTask()">Complete</button>
+    </P>
+</article>
+
+
+Step 2: Update task.html
+-------------------------
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from './task.model';
+
+
+
+@Component({
+  selector: 'app-task',
+  imports: [],
+  templateUrl: './task.html',
+  styleUrl: './task.css',
+})
+export class TaskComponent {
+
+  @Input({required:true}) task!:Task;
+  @Output() complete = new EventEmitter<string>();
+
+  onCompleteTask(){
+    this.complete.emit(this.task.id);
+  }
+  
+}
+
+Step 3: tasks.html (parent)
+
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button>Add Task</button>
+    </header>
+</div>
+
+<ul>
+@for(task of selectedUserTasks; track task.id){
+
+   <li>
+        <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+   </li>
+}
+</ul>
+
+Step 4: Remove task here in function onCompleteTask
+
+import { Component, Input } from '@angular/core';
+import { required } from '@angular/forms/signals';
+import { TaskComponent } from './task/task';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [TaskComponent],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+  @Input ({required:true}) userId!:string;
+  @Input({required:true}) name!:string;
+
+  tasks = [
+    {
+      id:'t1',
+      userId:'u1',
+      title:'Adding login feature',
+      summary:'login with otp, gmail and username',
+      dueDate: '2026-06-28'
+    },
+     {
+      id:'t2',
+      userId:'u2',
+      title:'Adding upload images',
+      summary:'Per product max 15 images to be uploaded',
+      dueDate: '2026-06-29'
+    },
+    {
+      id:'t3',
+      userId:'u1',
+      title:'Adding upload product description',
+      summary:'add product description',
+      dueDate: '2026-06-29'
+    }
+  ];
+
+  get selectedUserTasks(){
+    return this.tasks.filter((t)=> t.userId===this.userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasks = this.tasks.filter((task)=> task.id!== id);
+  }
+}
+
+
+#####################
+LAB TASK 35 - Implement Add Task Feature
+#####################
+
+Step 1: Create new Component
+
+ng g c tasks/new-task
+
+Note: Child Component of tasks
+
+Step 2: Update tasks.ts - add boolean variable addNewTask()
+------------------------
+
+
+import { Component, Input } from '@angular/core';
+import { required } from '@angular/forms/signals';
+import { TaskComponent } from './task/task';
+import { NewTask } from './new-task/new-task';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [TaskComponent,NewTask],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+
+  @Input ({required:true}) userId!:string;
+  @Input({required:true}) name!:string;
+  isAddingTask:boolean = false;
+  tasks = [
+    {
+      id:'t1',
+      userId:'u1',
+      title:'Adding login feature',
+      summary:'login with otp, gmail and username',
+      dueDate: '2026-06-28'
+    },
+     {
+      id:'t2',
+      userId:'u2',
+      title:'Adding upload images',
+      summary:'Per product max 15 images to be uploaded',
+      dueDate: '2026-06-29'
+    },
+    {
+      id:'t3',
+      userId:'u1',
+      title:'Adding upload product description',
+      summary:'add product description',
+      dueDate: '2026-06-29'
+    }
+  ];
+
+  get selectedUserTasks(){
+    return this.tasks.filter((t)=> t.userId===this.userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasks = this.tasks.filter((task)=> task.id!== id);
+  }
+
+  addNewTask() {
+    this.isAddingTask=true;
+  }
+}
+
+Step 3: update tasks.html - @if
+---------------------------------
+
+@if(isAddingTask){
+    <app-new-task />
+}
+
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button (click)="addNewTask()">Add Task</button>
+    </header>
+</div>
+
+<ul>
+@for(task of selectedUserTasks; track task.id){
+
+   <li>
+        <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+   </li>
+}
+</ul>
+
+
+#####################
+LAB TASK 36 - Adding new Task Dialog Form
+#####################
+
+Step : Add the following code to new-task.html
+
+<div class="backdrop"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form>
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" />
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" />
+    </p>
+
+    <p class="actions">
+      <button type="button">Cancel</button>
+      <button type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
+
+Step 2: Add css to new-task.css
+.backdrop {
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+}
+
+dialog {
+  width: 90%;
+  max-width: 30rem;
+  background-color: #433352;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  padding: 1rem;
+  top: 5rem;
+}
+
+h2 {
+  margin: 0;
+  color: #d0c2e1;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  font-size: 0.85rem;
+  color: #ab9ac0;
+}
+
+input,
+textarea {
+  width: 100%;
+  font: inherit;
+  padding: 0.15rem 0.25rem;
+  border-radius: 4px;
+  border: 1px solid #ab9ac0;
+  background-color: #d0c2e1;
+}
+
+.actions {
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.25rem;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border: none;
+  padding: 0.35rem 1.25rem;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+button[type="button"] {
+  color: #bdadcf;
+}
+
+button[type="button"]:hover,
+button[type="button"]:active {
+  color: #d0c2e1;
+}
+
+button[type="submit"] {
+  background-color: #9c73ca;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:active {
+  background-color: #895cce;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  dialog {
+    padding: 2rem;
+  }
+}
+
+
+
+#####################
+LAB TASK 36 - Adding new Task Dialog Form continuation - cancel feature
+#####################
+
+NewTask (cancel Button)--> @Output(NewTask.ts) --> Tasks.html-->Tasks.ts-->set to false
+
+Step 1: Update NewTask.html
+----------------------------
+<div class="backdrop" (click)="cancelTasks()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form>
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" />
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" />
+    </p>
+
+    <p class="actions">
+      <button (click)="cancelTasks()" type="button">Cancel</button>
+      <button  type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
+
+Step 2: Update NewTask.ts - @Output
+------------------------
+
+import { Component, EventEmitter, Output } from '@angular/core';
+
+@Component({
+  selector: 'app-new-task',
+  imports: [],
+  templateUrl: './new-task.html',
+  styleUrl: './new-task.css',
+})
+export class NewTask {
+
+  @Output() cancelTask = new EventEmitter<void>();
+
+  cancelTasks(){
+    this.cancelTask.emit();
+  }
+
+}
+
+Step 3: Update Tasks.html
+----------------------------
+@if(isAddingTask){
+    <app-new-task (cancelTask)="cancelNewTask()"/>
+}
+
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button (click)="addNewTask()">Add Task</button>
+    </header>
+</div>
+
+<ul>
+@for(task of selectedUserTasks; track task.id){
+
+   <li>
+        <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+   </li>
+}
+</ul>
+
+
+Step 4: Update Tasks.ts
+----------------------
+import { Component, Input } from '@angular/core';
+import { required } from '@angular/forms/signals';
+import { TaskComponent } from './task/task';
+import { NewTask } from './new-task/new-task';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [TaskComponent,NewTask],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+
+  @Input ({required:true}) userId!:string;
+  @Input({required:true}) name!:string;
+  isAddingTask:boolean = false;
+  tasks = [
+    {
+      id:'t1',
+      userId:'u1',
+      title:'Adding login feature',
+      summary:'login with otp, gmail and username',
+      dueDate: '2026-06-28'
+    },
+     {
+      id:'t2',
+      userId:'u2',
+      title:'Adding upload images',
+      summary:'Per product max 15 images to be uploaded',
+      dueDate: '2026-06-29'
+    },
+    {
+      id:'t3',
+      userId:'u1',
+      title:'Adding upload product description',
+      summary:'add product description',
+      dueDate: '2026-06-29'
+    }
+  ];
+
+  get selectedUserTasks(){
+    return this.tasks.filter((t)=> t.userId===this.userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasks = this.tasks.filter((task)=> task.id!== id);
+  }
+
+  addNewTask() {
+    this.isAddingTask=true;
+  }
+  cancelNewTask() {
+    this.isAddingTask=false;
+  }
+}
+
+#####################
+LAB TASK 37 - Adding new Task Dialog Form continuation - create feature
+#####################
+
+Property & event Binding
+--------------------------
+What is ngModel in Angular?
+
+ngModel is an Angular directive used for two-way data binding between a component property and an HTML form control (such as an <input>, <select>, or <textarea>).
+
+It is part of Angular's FormsModule.
+
+Syntax: [(ngNodel)]
+
+
+Step 1: update new-task.html
+-----------------------------
+<div class="backdrop" (click)="cancelTasks()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form>
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>
+    </p>
+
+    <p>
+      <label for="title">Title2</label>
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" />
+    </p>
+
+    <p class="actions">
+      <button (click)="cancelTasks()" type="button">Cancel</button>
+      <button  type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
+
+Step 2: Update new-tasks.ts
+----------------------------
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-new-task',
+  imports: [FormsModule],
+  templateUrl: './new-task.html',
+  styleUrl: './new-task.css',
+})
+export class NewTask {
+
+  @Output() cancelTask = new EventEmitter<void>();
+
+  enteredTitle:string='';
+
+  cancelTasks(){
+    this.cancelTask.emit();
+  }
+
+}
+
+
+#####################
+LAB TASK 38- Adding new Task Dialog Form continuation - create feature
+#####################
+
+Step 1: update new-task.html
+---------------------------
+<div class="backdrop" (click)="cancelTasks()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form>
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="enteredSummary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="enteredDueDate"/>
+    </p>
+
+    <p class="actions">
+      <button (click)="cancelTasks()" type="button">Cancel</button>
+      <button  type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
+
+Step 2: Update new-task.ts
+----------------------------
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-new-task',
+  imports: [FormsModule],
+  templateUrl: './new-task.html',
+  styleUrl: './new-task.css',
+})
+export class NewTask {
+
+  @Output() cancelTask = new EventEmitter<void>();
+
+  enteredTitle:string='';
+  enteredSummary:string='';
+  enteredDueDate:string='';
+
+  cancelTasks(){
+    this.cancelTask.emit();
+  }
+
+}
+
+ #####################
+LAB TASK 39- Adding new Task Dialog Form continuation - create feature - Using signals
+#####################
+
+Step 1: no change in new-task.html
+<div class="backdrop" (click)="cancelTasks()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form>
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="enteredSummary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="enteredDueDate"/>
+    </p>
+
+    <p class="actions">
+      <button (click)="cancelTasks()" type="button">Cancel</button>
+      <button  type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
+
+Step 2: Update new-task.ts with signals
+import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-new-task',
+  imports: [FormsModule],
+  templateUrl: './new-task.html',
+  styleUrl: './new-task.css',
+})
+export class NewTask {
+
+  @Output() cancelTask = new EventEmitter<void>();
+
+  enteredTitle = signal('');
+  enteredSummary= signal('');
+  enteredDueDate=signal('');
+
+  cancelTasks(){
+    this.cancelTask.emit();
+  }
+
+}
+
+#####################
+LAB TASK 40- Adding new Task Dialog Form continuation - create feature - Form Submittion
+#####################
+
+Step 1: Update new-task.html
+------------------------------
+<div class="backdrop" (click)="cancelTasks()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form (ngSubmit)="taskSubmit()">
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="enteredSummary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="enteredDueDate"/>
+    </p>
+
+    <p class="actions">
+      <button (click)="cancelTasks()" type="button">Cancel</button>
+      <button  type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
+
+Step 2: Update new-task.ts
+--------------------------
+import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-new-task',
+  imports: [FormsModule],
+  templateUrl: './new-task.html',
+  styleUrl: './new-task.css',
+})
+export class NewTask {
+
+
+  @Output() cancelTask = new EventEmitter<void>();
+
+  enteredTitle = '';
+  enteredSummary= '';
+  enteredDueDate='';
+
+  cancelTasks(){
+    this.cancelTask.emit();
+  }
+
+  taskSubmit() {
+      console.log(this.enteredTitle);
+      console.log(this.enteredSummary);
+      console.log(this.enteredDueDate);
+      
+      
+  }
+
+}
+
+#####################
+LAB TASK 40- Adding new Task Dialog Form continuation - create feature - Send data from new-task(child) to tasks.ts(parent) using @Output
+#####################
+
+Step 1: no change in new-task.html
+---------------------------
+<div class="backdrop" (click)="cancelTasks()"></div>
+<dialog open>
+  <h2>Add Task</h2>
+  <form (ngSubmit)="taskSubmit()">
+    <p>
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="enteredTitle"/>
+    </p>
+
+    <p>
+      <label for="summary">Summary</label>
+      <textarea id="summary" rows="5" name="summary" [(ngModel)]="enteredSummary"></textarea>
+    </p>
+
+    <p>
+      <label for="due-date">Due Date</label>
+      <input type="date" id="due-date" name="due-date" [(ngModel)]="enteredDueDate"/>
+    </p>
+
+    <p class="actions">
+      <button (click)="cancelTasks()" type="button">Cancel</button>
+      <button  type="submit">Create</button>
+    </p>
+  </form>
+</dialog>
+
+Step 2: Update new-task.ts
+----------------------------
+import { Component, EventEmitter, Output, signal } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+
+@Component({
+  selector: 'app-new-task',
+  imports: [FormsModule],
+  templateUrl: './new-task.html',
+  styleUrl: './new-task.css',
+})
+export class NewTask {
+
+
+  @Output() cancelTask = new EventEmitter<void>();
+
+  @Output() addTask = new EventEmitter<{
+    title:string;
+    summary:string;
+    date:string
+  }
+    >();
+
+  enteredTitle = '';
+  enteredSummary= '';
+  enteredDueDate='';
+
+  cancelTasks(){
+    this.cancelTask.emit();
+  }
+
+  taskSubmit() {
+      this.addTask.emit(
+        {
+          title:this.enteredTitle,
+          summary:this.enteredSummary,
+          date:this.enteredDueDate
+        }
+      );
+      
+      
+  }
+
+}
+
+Step 3: Create model taskdata.model.ts
+-------------------------------------
+interface Taskdata{
+
+    title:string;
+    summary:string;
+    date:string
+
+}
+
+Step 4: Update tasks.html 
+--------------------------
+@if(isAddingTask){
+    <app-new-task (cancelTask)="cancelNewTask()" (addTask)="createTask($event)"/>
+}
+
+<div class="tasks">
+    <header>
+        {{name}}'s tasks
+        <button (click)="addNewTask()">Add Task</button>
+    </header>
+</div>
+
+<ul>
+@for(task of selectedUserTasks; track task.id){
+
+   <li>
+        <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+   </li>
+}
+</ul>
+
+
+Step 5: add tasks to the array in tasks.ts
+-------------------------------------------
+
+import { Component, Input } from '@angular/core';
+import { TaskComponent } from './task/task';
+import { NewTask } from './new-task/new-task';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [TaskComponent,NewTask],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+
+
+  @Input ({required:true}) userId!:string;
+  @Input({required:true}) name!:string;
+  isAddingTask:boolean = false;
+  tasks = [
+    {
+      id:'t1',
+      userId:'u1',
+      title:'Adding login feature',
+      summary:'login with otp, gmail and username',
+      dueDate: '2026-06-28'
+    },
+     {
+      id:'t2',
+      userId:'u2',
+      title:'Adding upload images',
+      summary:'Per product max 15 images to be uploaded',
+      dueDate: '2026-06-29'
+    },
+    {
+      id:'t3',
+      userId:'u1',
+      title:'Adding upload product description',
+      summary:'add product description',
+      dueDate: '2026-06-29'
+    }
+  ];
+
+  get selectedUserTasks(){
+    return this.tasks.filter((t)=> t.userId===this.userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasks = this.tasks.filter((task)=> task.id!== id);
+  }
+
+  addNewTask() {
+    this.isAddingTask=true;
+  }
+  cancelNewTask() {
+    this.isAddingTask=false;
+  }
+  createTask(data:Taskdata) {
+    this.tasks.push({
+      id:new Date().getMilliseconds().toString(),
+      userId:this.userId,
+      title:data.title,
+      summary:data.summary,
+      dueDate:data.date
+    });
+    this.isAddingTask=false
+  }
+}
+
+#####################
+LAB TASK 41- Transforming data with pipes
+#####################
+Step 1: task.html
+-----------------
+<article>
+    <h2>{{task.title}}</h2>
+    <time>{{task.dueDate | date:'fullDate'}}</time>
+    <p>{{task.summary}}</p>
+    <P class="actions">
+        <button (click)="onCompleteTask()">Complete</button>
+    </P>
+</article>
+
+Step 2: Import that in task.ts
+------------------------------
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Task } from './task.model';
+import { DatePipe } from '@angular/common';
+
+
+@Component({
+  selector: 'app-task',
+  imports: [DatePipe],
+  templateUrl: './task.html',
+  styleUrl: './task.css',
+})
+export class TaskComponent {
+
+  @Input({required:true}) task!:Task;
+  @Output() complete = new EventEmitter<string>();
+
+  onCompleteTask(){
+    this.complete.emit(this.task.id);
+  }
+  
+}
+
+#####################
+LAB TASK 42- Introduction to Service layer
+#####################
+
+
+Step 1: create tasks.service.ts
+-------------------------------
+class TasksService{
+  isAddingTask:boolean = false;
+  tasks = [
+    {
+      id:'t1',
+      userId:'u1',
+      title:'Adding login feature',
+      summary:'login with otp, gmail and username',
+      dueDate: '2026-06-28'
+    },
+     {
+      id:'t2',
+      userId:'u2',
+      title:'Adding upload images',
+      summary:'Per product max 15 images to be uploaded',
+      dueDate: '2026-06-29'
+    },
+    {
+      id:'t3',
+      userId:'u1',
+      title:'Adding upload product description',
+      summary:'add product description',
+      dueDate: '2026-06-29'
+    }
+  ];
+
+  selectedUserTasks(userId:string){
+    return this.tasks.filter((t)=> t.userId===userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasks = this.tasks.filter((task)=> task.id!== id);
+  }
+
+  addNewTask() {
+    this.isAddingTask=true;
+  }
+  cancelNewTask() {
+    this.isAddingTask=false;
+  }
+  createTask(data:Taskdata,userId:string) {
+    this.tasks.push({
+      id:new Date().getMilliseconds().toString(),
+      userId:userId,
+      title:data.title,
+      summary:data.summary,
+      dueDate:data.date
+    });
+    this.isAddingTask=false
+  }
+}
+
+Step 2: dependency Injection
+------------------------
+import { Component, Input } from '@angular/core';
+import { TaskComponent } from './task/task';
+import { NewTask } from './new-task/new-task';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [TaskComponent,NewTask],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+  @Input ({required:true}) userId!:string;
+  @Input({required:true}) name!:string;
+
+ // private tasksService:TasksService;
+
+// private tasksService = inject(TasksService); //Alternative approach
+
+  constructor(private tasksService:TasksService){
+    this.tasksService=tasksService;
+  }
+
+
+ 
+  get selectedUserTasks(){
+    return this.tasksService.selectedUserTasks(this.userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasksService.onCompleteTask(id);
+  }
+
+  addNewTask() {
+    this.tasksService.addNewTask();
+  }
+  cancelNewTask() {
+    this.tasksService.cancelNewTask();
+  }
+  createTask(data:Taskdata) {
+    this.tasksService.createTask(data,this.userId);
+  }
+}
+
+
+#####################
+LAB TASK 43- Storing data in LocalStorage
+#####################
+
+Step 1: update tasks.ts
+---------------------------
+import { Component, inject, Input } from '@angular/core';
+import { TaskComponent } from './task/task';
+import { NewTask } from './new-task/new-task';
+import { TasksService } from './tasks.service';
+
+@Component({
+  selector: 'app-tasks',
+  imports: [TaskComponent,NewTask],
+  templateUrl: './tasks.html',
+  styleUrl: './tasks.css',
+})
+export class TasksComponent {
+  @Input ({required:true}) userId!:string;
+  @Input({required:true}) name!:string;
+  isAddingTask:boolean = false;
+ // private tasksService:TasksService;
+
+ private tasksService = inject(TasksService);
+
+  // constructor(private tasksService:TasksService){
+  //   this.tasksService=tasksService;
+  // }
+
+
+ 
+  get selectedUserTasks(){
+    return this.tasksService.selectedUserTasks(this.userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasksService.onCompleteTask(id);
+  }
+
+  addNewTask() {
+    this.isAddingTask=true;
+  }
+  cancelNewTask() {
+    this.isAddingTask=false;
+  }
+  createTask(data:Taskdata) {
+    this.tasksService.createTask(data,this.userId);
+  }
+}
+
+Step 2: Adding data to local storage
+-----------------------------------
+import { Injectable } from "@angular/core";
+
+@Injectable({
+    providedIn:'root'
+})
+export class TasksService{
+  isAddingTask:boolean = false;
+  tasks = [
+    {
+      id:'t1',
+      userId:'u1',
+      title:'Adding login feature',
+      summary:'login with otp, gmail and username',
+      dueDate: '2026-06-28'
+    },
+     {
+      id:'t2',
+      userId:'u2',
+      title:'Adding upload images',
+      summary:'Per product max 15 images to be uploaded',
+      dueDate: '2026-06-29'
+    },
+    {
+      id:'t3',
+      userId:'u1',
+      title:'Adding upload product description',
+      summary:'add product description',
+      dueDate: '2026-06-29'
+    }
+  ];
+
+  constructor(){
+        const storageTasks = localStorage.getItem('tasks');
+
+        if(storageTasks){
+            this.tasks=JSON.parse(storageTasks);
+        }
+  }
+
+  selectedUserTasks(userId:string){
+    return this.tasks.filter((t)=> t.userId===userId);
+  }
+
+  onCompleteTask(id:string){
+      this.tasks = this.tasks.filter((task)=> task.id!== id);
+      this.setTasks();
+  }
+
+//   addNewTask() {
+//     this.isAddingTask=true;
+//   }
+//   cancelNewTask() {
+//     this.isAddingTask=false;
+//   }
+  createTask(data:Taskdata,userId:string) {
+    this.tasks.push({
+      id:new Date().getMilliseconds().toString(),
+      userId:userId,
+      title:data.title,
+      summary:data.summary,
+      dueDate:data.date
+    });
+    this.isAddingTask=false
+    this.setTasks();
+  }
+
+  private setTasks(){
+    localStorage.setItem('tasks',JSON.stringify(this.tasks));
+  }
+}
+
+
+
+
+
