@@ -1807,3 +1807,172 @@ Example: E-Commerce adding products:
     
 </body>
 </html>
+
+Bootstrap Components
+--------------------
+
+1. Button Component:
+
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-dark">Dark</button>
+
+<button type="button" class="btn btn-link">Link</button>
+
+2.  Card Component:
+
+<div class="card" style="width: 18rem;">
+  <img src="..." class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+3. Nav Component:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+</body>
+    
+</body>
+</html>
+
+</body>
+    
+</body>
+</html>
+
+🧭 1. <nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+Meaning:
+navbar → activates Bootstrap navbar styling
+navbar-expand-lg → navbar stays horizontal on large screens, collapses on small screens
+bg-body-tertiary → light background color
+📱 Behavior:
+Mobile (<992px): collapsed (hamburger menu)
+Desktop (≥992px): full menu visible
+📦 2. <div class="container-fluid">
+<div class="container-fluid">
+Meaning:
+Full-width container
+Navbar stretches across entire screen
+🏷️ 3. Brand
+<a class="navbar-brand" href="#">Navbar</a>
+Meaning:
+Website logo or title
+Usually placed on left side
+🍔 4. Toggle Button (Hamburger Menu)
+<button class="navbar-toggler" type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarNav">
+Meaning:
+
+This button appears on mobile.
+
+👉 When clicked:
+
+It opens/closes menu
+Icon inside:
+<span class="navbar-toggler-icon"></span>
+
+This shows the hamburger icon (☰)
+
+📂 5. Collapsible Menu Section
+<div class="collapse navbar-collapse" id="navbarNav">
+Meaning:
+collapse → hidden on mobile
+navbar-collapse → navbar behavior
+id="navbarNav" → linked to toggle button
+🔗 6. Navigation Links
+<ul class="navbar-nav">
+
+This contains menu items.
+
+Each item:
+<li class="nav-item">
+  <a class="nav-link" href="#">Features</a>
+</li>
+Meaning:
+nav-item → list item
+nav-link → styled link
+⭐ Special classes
+Active link
+<a class="nav-link active">Home</a>
+
+👉 Highlights current page
+
+Disabled link
+<a class="nav-link disabled">Disabled</a>
+
+👉 Not clickable
+
+📱 Final Behavior Summary
+Desktop (≥992px):
+Navbar brand | Home Features Pricing Disabled
+
+Mobile (<992px):
+Navbar brand [☰]
+When clicked:
+  Home
+  Features
+  Pricing
+  Disabled
+
+UX - User experience
+a. simplicity
+b. Consistency
+c. F layout - reading pattern / z- layout reading pattern
+d. All platform design
+e. Avoid evil design
