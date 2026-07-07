@@ -2103,6 +2103,7 @@ Updates UI where values changed
 Option 2: Signals(Angular 16 and above)
 --------------------------------------
 Think of a signal as a variable that Angular automatically tracks. When the signal value changes, Angular knows exactly what needs to be updated in the UI.
+There isn’t a special “count signal” built into Angular — but we can easily create one ourself using signal(). It will keep track of changes in our component and update the UI reactively. Even if we don't create count signal, angular signal tracks changes automatically and notifies any consumers (like components, templates, or computed signals) when its value updates.
 
 count signal changed
         ↓
@@ -2585,18 +2586,18 @@ Step 2: Update. app.html
 <main>
   <div class="content">
     <ul id="users">
-      <ul>
+      <li>
         <app-user [id]="users[0].id" [avatar]="users[0].avatar" [name]="users[0].name"
           (select)="onSelectUser($event)" />
-      </ul>
-      <ul>
+      </li>
+      <li>
         <app-user [id]="users[1].id" [avatar]="users[1].avatar" [name]="users[1].name"
           (select)="onSelectUser($event)" />
-      </ul>
-      <ul>
+      </li>
+      <li>
         <app-user [id]="users[2].id" [avatar]="users[2].avatar" [name]="users[2].name"
           (select)="onSelectUser($event)" />
-      </ul>
+      </li>
     </ul>
 
     <div class="tasks">
@@ -2660,7 +2661,9 @@ export class App {
   selectedUserId:string='u1';
 
   get selectedUser(){
-    return this.users.find((users) => users.id === this.selectedUserId)!;
+    return this.users.find((users) => users.id === this.selectedUserId)!; 
+    // the ! at the end is called the non‑null assertion operator in TypeScript.
+    // Normally, Array.find(...) can return either the matching element, or undefined if no match is found. TypeScript warns us that the result might be undefined. By adding !, we are telling the compiler: “Trust me, this will never be undefined — treat it as non‑null.” So the type changes from User | undefined to just User.
   }
 
   onSelectUser(id:string){
@@ -2847,18 +2850,18 @@ Step 3: update app.html
 <main>
   <div class="content">
     <ul id="users">
-      <ul>
+      <li>
         <app-user [user]="users[0]"
           (select)="onSelectUser($event)" />
-      </ul>
-      <ul>
+      </li>
+      <li>
         <app-user [user]="users[1]"
           (select)="onSelectUser($event)" />
-      </ul>
-      <ul>
+      </li>
+      <li>
         <app-user [user]="users[2]"
           (select)="onSelectUser($event)" />
-      </ul>
+      </li>
     </ul>
 
     <div class="tasks">
@@ -3001,10 +3004,10 @@ Step 1: update app.html
 
     <ul id="users">
       @for (user of users; track user.id){
-          <ul>
+          <li>
             <app-user [user]="user"
               (select)="onSelectUser($event)" />
-        </ul>
+        </li>
       }
       
      
@@ -3066,10 +3069,10 @@ Step 2: Update app.html
 
     <ul id="users">
       @for (user of users; track user.id){
-          <ul>
+          <li>
             <app-user [user]="user"
               (select)="onSelectUser($event)" />
-        </ul>
+        </li>
       }
       
      
@@ -3134,10 +3137,10 @@ Step 2: update app.html
 
     <ul id="users" >
       <!-- @for (user of users; track user.id){ -->
-        <ul *ngFor="let user of users">
+        <li *ngFor="let user of users">
             <app-user [user]="user"
               (select)="onSelectUser($event)" />
-        </ul>
+        </li>
       <!-- } -->
       
      
