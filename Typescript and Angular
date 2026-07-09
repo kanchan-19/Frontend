@@ -1467,7 +1467,7 @@ Check : ng version
 
 Creating first angular project
 ------------------------------
- Command: ng new first-angular-app
+Command: ng new first-angular-app
 
  Next step: go to first-angular-app folder then open cmd and type code . to open project in vs code
 
@@ -1496,10 +1496,11 @@ angular.json → How Angular builds/runs
 src folder is the one where most of the developers will spend time 
 
 in src you will see styles.css - this is global css. These css rules are applied to web pages
-index.html - First root html page visitors will access when they visit you app(Angular injects application into this)
-main.ts is the entry point of an Angular application. When your app starts, execution begins from this file.
+index.html - First root html page visitors will access when they visit your app(Angular injects application into this)
+main.ts is the entry point of an Angular application. When our app starts, execution begins from this file.
 
 assets folder: where we store images
+In the newer angular version we store images in public folder.
 
 
 ###################
@@ -1549,7 +1550,7 @@ App (app-root)
 │
 ├── HeaderComponent (app-header)
 
-So we have to define HeaderComponent inside app.ts or else app.ts will not be able to access header component.
+So, we have to define HeaderComponent inside app.ts or else app.ts will not be able to access header component.
 
 app.ts
 -------
