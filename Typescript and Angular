@@ -3479,7 +3479,7 @@ Step 3: update task.html
 LAB TASK 33 - Creating Model Layer 
 #####################
 
-Step 1: create user.model.ts - keep yout dto here
+Step 1: create user.model.ts - keep yout dto (data transfer object) here
 ------------------------------
 export interface User {
   id: string,
