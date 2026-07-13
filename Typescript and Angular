@@ -3610,9 +3610,11 @@ import { Task } from './task.model';
 export class TaskComponent {
 
   @Input({required:true}) task!:Task;
-  @Output() complete = new EventEmitter<string>();
+  @Output() complete = new EventEmitter<string>(); -> Here, complete is an an Angular EventEmitter instance. It is typed to emit string values. It is decorated with @Output(), so it becomes an output property of the TaskComponent. This allows parent components to listen for the event using Angular’s event binding syntax.
+  We can emit any value we want, as long as it matches the type we declared for the EventEmitter. The parent component will then receive that value in $event when it listens to (complete).
+  
 
-  onCompleteTask(){
+onCompleteTask(){
     this.complete.emit(this.task.id);
   }
   
@@ -3783,7 +3785,24 @@ LAB TASK 36 - Adding new Task Dialog Form
 
 Step : Add the following code to new-task.html
 
-<div class="backdrop"></div>
+1. for attribute in <label>
+The for attribute links the <label> element to a specific form control (like <input>). Its value must match the id of the input field.
+In our code, <label for="title">Title</label>
+<input type="text" id="title" name="title" />
+for="title" connects the label to the input with id="title".
+This means when we click on the label text “Title”, the cursor automatically focuses on the associated input box. It improves accessibility (screen readers can announce the label when the input is focused).
+
+2. name attribute in <input>
+The name attribute identifies the input field when the form is submitted. It acts as the key in the key–value pair sent to the server.
+Example:<input type="text" id="title" name="title" />
+If the user types "My Task" and submits the form, the data sent will look like:title=My Task
+Without a name, the input’s value won’t be included in the form submission.
+
+
+<div class="backdrop"></div> -> This is used to create a dark overlay behind our dialog box. 
+Purpose of the backdrop:
+It visually separates the modal (<dialog>) from the rest of the page. By covering the entire viewport with a semi‑transparent layer, it draws the user’s attention to the dialog. It prevents the background content from distracting the user while they interact with the modal.
+
 <dialog open>
   <h2>Add Task</h2>
   <form>
@@ -3811,12 +3830,13 @@ Step : Add the following code to new-task.html
 
 Step 2: Add css to new-task.css
 .backdrop {
-  background-color: rgba(0, 0, 0, 0.9);
-  position: fixed;
+  background-color: rgba(0, 0, 0, 0.9); → applies a nearly black overlay with slight transparency (so we can still faintly see the page behind it).
+  position: fixed; → ensures the backdrop stays in place even if the page scrolls.
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
+  top, left, height and width properties → makes it cover the entire screen.
 }
 
 dialog {
@@ -3825,7 +3845,7 @@ dialog {
   background-color: #433352;
   border-radius: 6px;
   border: none;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.4); -> it creates a soft, slightly downward shadow that makes the element look raised above the background. It applies a shadow effect around an element’s box. The values define position (0 → Horizontal offset, 1px → Vertical offset), blur (6px → Blur radius), and color (Black (rgb(0,0,0)) with 40% opacity (alpha = 0.4)) of the shadow.
   overflow: hidden;
   padding: 1rem;
   top: 5rem;
