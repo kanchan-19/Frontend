@@ -4800,7 +4800,7 @@ Deep dive - pipes in angular
 
 In Angular, pipes are a feature used to transform data in a template without changing the original value. They make it easy to format text, numbers, dates, currencies, and more.
 
-Note: For builtin pipes import CommonModule
+Note: For built-in pipes import CommonModule
 
 {{ "angular" | uppercase }}
 
@@ -4883,9 +4883,9 @@ Step 3: Update app.html
  {{ 5 | number:'1.2-2' }}
   Because:
 
-At least 1 digit before decimal → 5
-At least 2 decimal places → .00
-Max 2 decimal places rounded → no extra rounding needed
+1 represents at least 1 digit before decimal → 5
+1st 2 represents at least 2 decimal places → .00
+2nd 2 represents max 2 decimal places rounded → no extra rounding needed
 
 Example:
 {{ 12.3456 | number:'1.2-2' }}
@@ -4929,8 +4929,7 @@ Timers
 
 It is a third party library used by Angular. Angular internally uses RxJS to implement reactive features, and it returns RxJS Observables (for example in HttpClient, Forms, Router events, etc.).
 
-
-1. RxJs Creates Observable
+1. RxJs creates Observable
 2. Observables emit values
 3. Subscribe Consume those values
 ----------------------------------------------------------------------
@@ -4976,7 +4975,7 @@ import { interval, Subscription } from 'rxjs';
 })
 export class App implements OnInit {
 
-  private unSubscribe = inject(DestroyRef);
+  private unsubscribe = inject(DestroyRef);
 
   ngOnInit(): void {
     const val = interval(1000).subscribe(
@@ -4986,14 +4985,23 @@ export class App implements OnInit {
       }
     );
 
-    this.unSubscribe.onDestroy(
+<!-- interval() is an RxJS creation function. It generates an Observable that emits sequential numbers (0, 1, 2, 3...) at a fixed time interval.
+In our code: interval(1000) → emits a new number every 1000 milliseconds (1 second).
+subscribe(...) → listens to those emissions and executes the next callback each time.
+So every second, it logs 0, 1, 2, 3....
+👉 Important: interval() never completes on its own, so the complete callback won’t run unless we manually stop it.  -->
+
+    this.unsubscribe.onDestroy(
     ()=>{
        val.unsubscribe();
     }
   );
   }
 
-  
+<!-- unsubscribe is created using Angular’s inject(DestroyRef).
+DestroyRef is a new Angular utility that lets us register cleanup logic when the component is destroyed.
+This ensures that when the App component is destroyed (e.g., navigating away), the subscription to interval() is automatically unsubscribed.
+Without this, the observable would keep running in the background, potentially causing memory leaks or unwanted logs.-->  
 }
 
 
