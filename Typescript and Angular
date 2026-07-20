@@ -5124,6 +5124,15 @@ Lab Task 1:
 
 Steps to create Template driven form
 --------------------------------------
+Step 1: Go to login.ts file and import FormsModule.
+Step 2: Create a special reference variable i.e. #form in HTML. Special reference variable starts with # symbol. #forms has to be of the type, ngForm.
+Whatever data we will provide in email and password field, that data will get injected in #form automatically.
+Step 3: Use ngModel in <input> tag. ngModel which is present in <input> tag, will take the field data and will provide it to object, ngForm.
+If we don't use ngModel, data binding of our input field will not happen with that particular object.
+Step 4: Now, we will provide object's reference to backend. For that, we will use, (ngsubmit)="onSubmit(form)" in <form> tag.
+Step 5: Create onSubmit() method in login.ts. It will have variable of type ngForm.
+
+We are calling this approach as template driven as most of the logic like validation is being written in template i.e. HTML file not in the backend .ts file.
 
 Step 1: Develop a form in login.component.html
 -------------------------------------------------
@@ -5374,6 +5383,26 @@ hr {
 Lab Task 2: Validation 
 ##########
 
+In Angular, ng-valid, ng-touched, ng-dirty are CSS classes automatically applied by Angular forms to reflect the state of a form control. They help us style inputs based on validation and user interaction.
+
+ng-valid / ng-invalid
+Applied based on whether the control passes validation.
+ng-valid → the input value satisfies all validators (required, email, minlength, etc.).
+ng-invalid → the input fails at least one validator.
+
+ng-touched / ng-untouched
+Applied based on whether the user has interacted (blurred) with the input.
+ng-touched → the user focused on the field and then left it (blur event).
+ng-untouched → the field has never been blurred.
+
+ng-dirty / ng-pristine
+Applied based on whether the value has been changed.
+ng-dirty → the user modified the value in the input.
+ng-pristine → the input value has not been changed since initialization.
+
+If the user types something wrong → ng-invalid ng-dirty ng-touched.
+If the user hasn’t touched the field yet → ng-pristine ng-untouched.
+
 <form #form="ngForm" (ngSubmit)="onSubmit(form)">
   <h2>Login</h2>
 
@@ -5382,6 +5411,14 @@ Lab Task 2: Validation
       <label for="email">Email</label>
       <input id="email" type="email" name="email" ngModel required email #email="ngModel"/>
     </div>
+
+<!-- ✅ ngModel → binds the input value to our component property.
+✅ required → ensures the field isn’t left empty.
+✅ email → ensures the value matches a valid email pattern.
+✅ #email="ngModel" → gives us access to the control state (valid/invalid, touched, errors, etc.). Gives us the detail about what is happening with the i/p like touched.
+
+Angular ships with a built‑in email validator directive. For password, there is no built‑in validator directive like password
+-->
 
     <div class="control no-margin">
       <label for="password">Password</label>
@@ -5443,6 +5480,7 @@ Lab Task 3: Further improvements in validation
 
 Lab Task 4: Further improvements - reset the form
 ##########
+After we submit the form, input fields should be reset to blank. For this, we will reset the form.
 
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
