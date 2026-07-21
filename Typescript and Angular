@@ -5838,7 +5838,7 @@ export const routes: Routes = [
     },
 
     {
-        path: 'home',
+        path: 'home', -> path name is decided by the developer. They decide HomeComponent should be rendered when localhost:4200/home is given in the URL.
         component: HomeComponent
     },
 
