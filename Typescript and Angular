@@ -5539,6 +5539,27 @@ export class LoginComponent {
 ######################
 Reactive Forms
 #####################
+In Reactive Form, main form building and validation logic is implemented in TS instead of HTML.
+
+Step 1: Import ReactiveFormsModule in respective component's .ts file.
+Step 2: Create an object of FormGroup
+form = new FormGroup({
+	email: new FormControl(''),
+	password: new FormControl('')
+}); -> Here, reference variable name can be anything. All the specifications related to form development i.e. whatever fields we have in HTML, we will create FormControl for those fields. Initial value of those fields will be empty string as mentioned in FormControl.
+FormGroup = container for multiple controls.
+FormControl = represents each input field.
+Step 3: Create onSubmit() method and print the form variable in console to understand the structure of the object.
+Step 4: Go to component's .html file and take the form object and bind it to formGroup in <form> tag. We will have (ngSubmit) which is going to call onSubmit() method.
+Do the field binding. There are two ways to do that. 
+One is using angular property binding, formControl in input field. Every input element need to have formControl and without it data from input field will not go to backend. form.controls.email should match with name attribute's value in <input> tag. 
+Angular property binding: Uses square brackets [] to bind a dynamic value from the component’s TypeScript class.
+Second way is uisng formControlName attribute and for this remove name attribute from <input> tag.
+
+formControl → Direct binding to a control instance (form.controls.email).
+formControlName → String-based mapping inside the FormGroup.
+
+In practice, formControlName is preferred because it’s simpler and scales better when you have many fields.
 
 LAB TASK 1: Develop Reactive Form and supply data
 
@@ -5616,7 +5637,7 @@ export class LoginComponent {
       validators:[Validators.email, Validators.required],
     }),
     password: new FormControl('',{
-      validators:[Validators.email, Validators.required, Validators.minLength(6)],
+      validators:[Validators.required, Validators.minLength(6)],
     })
   });
 
@@ -5672,6 +5693,9 @@ Step 2: Update login.component.html
 
 LAB TASK 3: CREATING CUSTOM VALIDATORS
 ----------------------------------------
+Step 1: To create a custom validator, we have to create a function with a parameter, control of the type, AbstractControl. Function name can be anything.
+All the validators are found inside the controls part of object.
+
 Step 1: login.component.ts
 --------------------------
 import { Component } from '@angular/core';
