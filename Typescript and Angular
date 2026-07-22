@@ -6165,7 +6165,7 @@ export const routes: Routes = [
 
 ];
 
-Explanation
+Explanation:
 admin is the parent route.
 dashboard, users, and settings are child routes.
 Visiting /admin automatically redirects to /admin/dashboard.
@@ -6177,14 +6177,19 @@ admin.html
 <h2>Admin Portal</h2>
 
 <nav>
-    <a routerLink="dashboard">Dashboard</a> |
+    <a routerLink="dashboard">Dashboard</a> | -> routerLink is used for making the link clickable. routerLink is directive applied to clickable elements (like <a> or <button>).
+Purpose: Navigates to a defined route in the app.
     <a routerLink="users">Users</a> |
     <a routerLink="settings">Settings</a>
 </nav>
 
 <hr>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> <!-- Directive that marks where the routed component should be displayed.
+Purpose: Acts as a container for the component associated with the current route.
+Behavior: When the route changes, Angular replaces the content inside <router-outlet> with the corresponding component. Supports nested routing (child routes render inside child outlets). -->
+
+The one where we write <router-outlet> tag becomes the parent for the links which we are calling in that file.
 
 Explanation
 
@@ -6239,7 +6244,7 @@ app.html
 
 <hr>
 
-<router-outlet></router-outlet>
+<router-outlet></router-outlet> -> this directive is telling that app component is parent of admin component.
 
 Step 7: Add RouterLink in app.ts
 -------------------------------
@@ -6265,16 +6270,14 @@ Routing Guards are used to protect routes in Angular.
 👉 They decide Who can enter a page
 
 1. CanActivate - Allow/deny access to a route
-
 🔥 1. CanActivate Guard (Most Important)
-
 👉 Used for authentication (login protection)
 
 Step 1: Create Guard
-ng generate guard auth
+ng generate guard auth 
 
 Step 2: Guard Code
-auth.guard.ts
+auth.guard.ts -> login code will be written here and we will verify the username and password and generate token if its valid.
 
 import { CanActivateFn } from '@angular/router';
 
@@ -6283,12 +6286,15 @@ export const authGuard: CanActivateFn = (route, state) => {
   const isLoggedIn = false; // simulate login
 
   if (isLoggedIn) {
-    return true;
+    return true;  
   } else {
     alert('Access Denied! Please login first');
     return false;
   }
 };
+ 
+If arrow function returns true -> this means route is activated, login is successful.
+If it return false, user is not logged in.
 
 Step 3: Apply Guard to Route
 app.routes.ts
@@ -6309,7 +6315,7 @@ export const routes: Routes = [
     
     path: 'admin',
     component: AdminComponent,
-    canActivate: [authGuard],
+    canActivate: [authGuard], -> it will guard path, localhost:4200/admin 
   
 
     children: [
@@ -6352,6 +6358,42 @@ It can:
 Allow navigation
 Block navigation
 Ask for confirmation (“Do you really want to leave?”)
+
+Step1 : ng generate guard can-deactivate-settings
+Step 2: Update the generic type from unknown to component type (SettingsComponent) in can-deactivate-settings-guard.ts
+Call a method on the component (like canExit()) to decide if navigation is allowed.
+
+import { CanDeactivateFn } from '@angular/router';
+import { SettingsComponent } from './settings/settings.component';
+
+export const canDeactivateSettingsGuard: CanDeactivateFn<SettingsComponent> = (
+  component,
+  currentRoute,
+  currentState,
+  nextState,
+) => {
+  return component.canExit(); // delegate decision to component
+};
+
+In SettingsComponent
+Make sure we have a method like this:
+
+canExit(): boolean {
+  if (this.hasUnsavedChanges) {
+    return confirm("You have unsaved changes. Do you really want to leave?");
+  }
+  return true;
+}
+
+📌 Route Configuration
+Attach the guard to your settings route:
+
+{
+  path: 'settings',
+  component: SettingsComponent,
+  canDeactivate: [canDeactivateSettingsGuard]
+}
+
 ######################################
 
 
