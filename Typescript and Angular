@@ -9508,5 +9508,38 @@ src/
 └── package.json
 
 
+Step 1: Set up the backend API. API is a medium to interact with our backend logic and database.
+Create a new folder with name backend-api. We will build dummy API in that folder which will help us to do CRUD operation, pagination etc.
+i. Install JSON SERVER using cmd, npm install -g json-server. It will help us to generate fake API's 
+ii. Create db.json file in backend-api folder which will act as database for now and paste the below json object in it.
+{
+  "employees": [
+    {
+      "id": "1",
+      "designation": "Developer",
+      "salary": 100000,
+      "email": "mike@gmail.com"
+    },
+    {
+      "id": "2",
+      "designation": "Tester",
+      "salary": 200000,
+      "email": "adam@gmail.com"
+    },
+    {
+      "id": "3",
+      "designation": "Developer",
+      "salary": 500000,
+      "email": "sam@gmail.com"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
 
+iii. Start json server using cmd, json-server --watch db.json --port 3000. After this, our backend API is ready for integration. We will get the endpoint, http://localhost:3000/employees
+
+Step 2: Create angular project following the above mentioned project structure.
+i. core folder will have all the code for guards. All the code related to login, token generation and authorization will be inside core folder.
+ii. shared folder should have the components which is common across all the pages like navbar, footer, sidebar.
+ii. features folder will contain all the pages related to employee like list employee, add employee etc. It will also contain services. Complete API integration with angular will take place in services folder. model is for keeping all the data which we are capturing from the form or the data coming from backend.
 
