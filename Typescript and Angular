@@ -5587,9 +5587,7 @@ export class LoginComponent {
   onSubmit() {
        const enteredEmail = this.form.value.email;
        const enteredPassword = this.form.value.password;
-        console.log(enteredEmail,enteredPassword);
-        
-        
+        console.log(enteredEmail,enteredPassword);                
     }
 
 }
@@ -5654,9 +5652,7 @@ export class LoginComponent {
   onSubmit() {
        const enteredEmail = this.form.value.email;
        const enteredPassword = this.form.value.password;
-        console.log(enteredEmail,enteredPassword);
-        
-        
+        console.log(enteredEmail,enteredPassword);   
     }
 
 }
@@ -5717,7 +5713,6 @@ function mustContainQuestionMark(control:AbstractControl){
 })
 
 export class LoginComponent {
-
 
   form = new FormGroup({
     email: new FormControl('',{
@@ -9543,3 +9538,127 @@ i. core folder will have all the code for guards. All the code related to login,
 ii. shared folder should have the components which is common across all the pages like navbar, footer, sidebar.
 ii. features folder will contain all the pages related to employee like list employee, add employee etc. It will also contain services. Complete API integration with angular will take place in services folder. model is for keeping all the data which we are capturing from the form or the data coming from backend.
 
+
+navbar.css
+.employee-container{
+  width: 100%;
+  height: 15vh;
+  background-color: #112E81;
+  color: white;
+  display: flex;
+  align-items: center;
+  margin: 4px;
+}
+
+.employee-app-name{
+  display: flex;
+  width: 60%;
+  margin-left: 14px;
+  font-weight: 700;
+}
+
+.employee-app-name img{
+  width: 40px;
+  height: 2rem;
+  margin-left: 8px;
+}
+
+.navbar-list{
+  width: 40%;
+  margin-left: 40%;
+}
+
+a{
+  padding: 4px 10px;
+  margin-right: 8px;
+  border-radius: 6px;
+}
+
+navbar.html
+<nav>
+  <div class="employee-container shadow-md">
+
+    <div class="employee-app-name lg:text-xl">
+      Employee App
+      <img src = "download.webp" alt = "ems-logo/">
+    </div>
+
+    <div class = "navbar-list">
+      <a routerLink="create-employee" routerLinkActive = "active" class = "bg-indigo-700">Create Employee</a> <!-- Use routerLink to navigate between routes, and routerLinkActive to style links when their route is active. When we say a route is active, it means that the current URL in the browser matches the path defined in our routerLink. -->
+      <a routerLink="list-employee" routerLinkActive = "active" class = "bg-indigo-700">List Employee</a>
+    </div>
+
+  </div>
+</nav>
+
+navbar.ts
+import { Component } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
+
+@Component({
+  selector: 'app-navbar',
+  imports: [RouterLink],
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.css',
+})
+export class NavbarComponent {}
+
+app.routes.ts
+import { Routes } from '@angular/router';
+import { CreateEmployeeComponent } from './features/employees/pages/create-employee/create-employee';
+import { ListEmployeeComponent } from './features/employees/pages/list-employee/list-employee';
+
+
+export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'create-employee',
+    pathMatch: 'full'
+  },
+
+  {
+    path: 'create-employee',
+    component: CreateEmployeeComponent
+  },
+
+  {
+    path: 'list-employee',
+    component: ListEmployeeComponent
+  }
+];
+
+app.html
+<app-navbar></app-navbar>
+<router-outlet></router-outlet>
+
+app.ts
+import { Component, signal } from '@angular/core';
+import { NavbarComponent } from './shared/navbar/navbar';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  imports: [NavbarComponent, RouterOutlet],
+  templateUrl: './app.html',
+  styleUrl: './app.css'
+})
+export class App {
+  protected readonly title = signal('employee-management');
+}
+
+Now, we will be creating a reactive form which should load when we click on create-employee link.
+
+Whatever data comes from form, that data will go to TS object which will be present in .ts file of model layer. For this create employee.model.ts in models folder.
+
+employee.model.ts
+export interface Employee{
+  id: string,
+  designation: string,
+  salary: number,
+  email: string
+}
+
+Create a service layer which will have Injectable decorator.
+We can access the object of service layer anywhere in the project because of the usage of Injectable decorator.
+
+Dependency Injection (DI) is a design pattern used in Angular (and many other frameworks) to make classes more reusable, testable, and loosely coupled. Instead of a class creating its own dependencies, they are injected into it from the outside by a container (Angular’s Injector).
