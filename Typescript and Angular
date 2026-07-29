@@ -9659,6 +9659,21 @@ export interface Employee{
 }
 
 Create a service layer which will have Injectable decorator.
-We can access the object of service layer anywhere in the project because of the usage of Injectable decorator.
 
 Dependency Injection (DI) is a design pattern used in Angular (and many other frameworks) to make classes more reusable, testable, and loosely coupled. Instead of a class creating its own dependencies, they are injected into it from the outside by a container (Angular’s Injector).
+
+Think of the Injector as Angular’s delivery service for dependencies. We tell Angular what services we need (like HttpClient, EmployeeService). The Injector is the one that creates those services and hands them over to our components or other services.
+
+Providers (left): Services like EmployeeService, HttpClient, LoggerService are registered.
+Injector (center): Acts as the container. It knows how to create, manage, and deliver these services.
+Consumer Component (right): A component (e.g., ListComponent) declares what it needs in its constructor.
+
+To create services, use the cmd, ng generate service Employee or ng g s Employee
+
+@Injectable({
+  providedIn: 'root' -> this means we can access service layers object anywhere in the project. This makes our service globally available and ensures Angular creates only one instance of it for the entire app.
+})
+
+Without Injectable decorator, we can't create object using dependency injection.
+
+In order to call this backend URL, we have HttpClient. This class has the features using which backend API call and angular can communicate. To make backend call, it uses RxJS library internally.
