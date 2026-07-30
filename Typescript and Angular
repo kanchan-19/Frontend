@@ -9676,4 +9676,4 @@ To create services, use the cmd, ng generate service Employee or ng g s Employee
 
 Without Injectable decorator, we can't create object using dependency injection.
 
-In order to call this backend URL, we have HttpClient. This class has the features using which backend API call and angular can communicate. To make backend call, it uses RxJS library internally.
+In order to call this backend URL, we have HttpClient. This class has the features using which backend API call can be done by angular. To make backend call, it uses RxJS library internally.
