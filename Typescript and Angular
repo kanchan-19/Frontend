@@ -6423,7 +6423,7 @@ Step 1: Create angular project
 
 ng new dev-pulse
 
-Step 2: Install TwailwindCss
+Step 2: Install TailwindCss
 
 https://tailwindcss.com/docs/installation/framework-guides/angular
 
@@ -6556,7 +6556,6 @@ Step 6: navbar.html add
 
             </div>
 
-
         </div>
 
     </div>
@@ -6650,7 +6649,6 @@ import {
   standalone:true
 })
 export class CreatePost {
-
 
   createPostForm = new FormGroup(
     {
@@ -6780,8 +6778,23 @@ For example, our development app may use a local API, while our production app u
 
 Step 1: generate environments in src folder
 
-ng g environments
+ng g environments -> Angular CLI generates 2 files i.e. environment.ts and environment.development.ts. It does not automatically generate environment.prod.ts. That’s intentional: Angular assumes we’ll create our own production file and configure it in angular.json.
 
+Always import from:
+Ts
+import { environment } from '../environments/environment';
+Never import .development or .prod directly. Angular swaps the file at build time.
+
+Environment flags in files
+environment.ts → production: false
+environment.development.ts → production: false
+environment.prod.ts → production: true
+environment.staging.ts -> production: false
+
+CLI commands:
+ng serve → defaults to development
+ng serve --configuration production → swaps in environment.prod.ts
+ng build → defaults to production unless you specify --configuration development
 
 Step 2: 
 Add in environment.ts
@@ -6866,11 +6879,11 @@ Cloud Storage
 Cloud Functions
 Cloud Messaging
 
-Command to install: npm install -g firebase-tools@latest
+Command to install: npm install -g firebase-tools@13.35.1
 
 Command to login: firebase login
 
-Command to add firebase to angular: ng add @angular/fire
+Command to add firebase to angular: ng add @angular/fire instead use -> npm install firebase @angular/fire --legacy-peer-deps and then check ->  npm list firebase
 
 Step 6: Update environment.ts
 
