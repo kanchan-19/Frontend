@@ -6933,14 +6933,28 @@ export const appConfig: ApplicationConfig = {
     // 🔥 Firebase (ONLY ONCE)
     provideFirebaseApp(() => initializeApp(environment.firebase)),
 
+initializeApp(environment.firebase) → Initializes our Firebase project using the configuration stored in environment.firebase (API key, project ID, etc.).
+provideFirebaseApp(...) → Makes this initialized Firebase app available throughout our Angular application.
+⚡ Important: We only call this once because we should have a single Firebase app instance.
+
     // 🔐 Auth
     provideAuth(() => getAuth()),
+
+getAuth() → Retrieves the Firebase Authentication service instance (handles login, signup, tokens, etc.).
+provideAuth(...) → Registers Firebase Auth with Angular’s dependency injection system so we can inject it into components/services.
 
     // 📦 Firestore
     provideFirestore(() => getFirestore()),
 
+getFirestore() → Gets the Firestore database instance (NoSQL cloud database).
+provideFirestore(...) → Makes Firestore available in our Angular app for querying, reading, and writing documents/collections.
+
     // 📁 Storage
     provideStorage(() => getStorage())
+
+getStorage() → Retrieves the Firebase Cloud Storage instance (used for uploading/downloading files like images, PDFs, etc.).
+provideStorage(...) → Registers Firebase Storage so we can inject and use it in our Angular services/components.
+
   ]
 };
 
@@ -6951,7 +6965,7 @@ export const appConfig: ApplicationConfig = {
 PROJECT LAB TASK 8 - Saving data to firestore (addDoc Function)
 ------------------
 
-Step 1: create fire Store refence inside create-post.component.ts
+Step 1: create fire Store reference inside create-post.component.ts
 
 Step 2: This will create a collection inside firebase
 const postCollectionReference = collection(this.fireStore,'blog-posts');
@@ -7117,7 +7131,7 @@ import { doc, Firestore, setDoc } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
-})
+}) /* This has been replaced with @Service() in Angular 22+. @Service() is for the common case (root‑provided singleton). @Injectable() is still available when we need advanced DI options like factories, custom providers, or non‑root scopes. */
 export class BlogpostsService {
   private fireStore = inject(Firestore);
 
@@ -7161,7 +7175,8 @@ export class CreatePostComponent {
 
  createPostForm = new FormGroup({
   title: new FormControl('', {
-    nonNullable: true,
+    nonNullable: true, /* By default, a FormControl can hold null as a value.
+When we set nonNullable: true, Angular ensures that the control’s value can never be null. Instead, it will always have the type we initialized it with (like string, number, etc.). It improves type safety and reduces boilerplate null checks*/
     validators: [
       Validators.required,
       Validators.minLength(5),
@@ -7193,7 +7208,7 @@ export class CreatePostComponent {
 PROJECT LAB TASK 11 - slug (SEO friendly url)
 ---------------------
 
-Step 1: create a folder call as helper / utility - blogposts-helper.ts
+Step 1: create a folder call as helper / utility - blogposts-helper.ts in app folder
 
 export class BlogPostHelper{
     static createSlug(title:string):string{
