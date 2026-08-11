@@ -7213,14 +7213,18 @@ Step 1: create a folder call as helper / utility - blogposts-helper.ts in app fo
 export class BlogPostHelper{
     static createSlug(title:string):string{
       const slug = title
-      .toLowerCase()
-      .trim()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-z0-9\s-]/g, '')
-      .replace(/\s+/g, '-')
-      .replace(/-+/g, '-')
-      .replace(/^-|-$/g, '');
+	  .toLowerCase()                // lowercase
+      .trim()                       // remove leading/trailing spaces
+      .normalize('NFD') /* Converts the string into Normalization Form Decomposition.
+This separates base characters from their diacritical marks (accents, tildes, etc.).
+Example: "é" → "é" (an e plus a combining accent). */
+      .replace(/[\u0300-\u036f]/g, '')  /* Removes all combining diacritical marks (Unicode range U+0300–U+036F).
+Effectively strips accents from letters.
+Example: "é" → "e". */                  
+      .replace(/[^a-z0-9\s-]/g, '') // remove special chars
+      .replace(/\s+/g, '-')         // replace spaces with hyphens
+      .replace(/-+/g, '-')         // collapse multiple hyphens
+      .replace(/^-|-$/g, '');      // Removes a hyphen if it appears at the start or end of the string
 
     const randomNumber = Math.floor(1000 + Math.random() * 9000);
 
@@ -7571,7 +7575,7 @@ step 3: Modify create-post.component.html
 
 </div>
 
-PROJECT LAB TASK 13- Navar @if loggedIn show CreatePost @else Login and Register Button
+PROJECT LAB TASK 13- Navbar @if loggedIn show CreatePost @else Login and Register Button
 ------------------------------------
 
 Step 1: Inside core create serivces folder
@@ -7597,7 +7601,7 @@ export class UserService {
   constructor() { }
 }
 
-Step 4: Inject UserService Inside navbar.component.ts
+Step 4: Inject UserService inside navbar.component.ts
 --------------------------------------
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
