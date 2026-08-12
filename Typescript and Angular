@@ -7683,12 +7683,9 @@ Step 7: Update @if @else inside navbar for logged-in-functionality
 ------------------------
  @if(userservice.isLoggedIn){
             <div class="hidden md:flex items-center ml-auto">
-
                 <app-logged-in-functionality></app-logged-in-functionality>
-
             </div>
-
-            }@else {
+    }@else {
                <div class="hidden md:flex items-center ml-auto">
                     <app-logged-out-functionality/>
                </div>
