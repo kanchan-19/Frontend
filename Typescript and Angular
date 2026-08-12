@@ -7700,7 +7700,7 @@ Step 8: Add the following code inside logged-in-functionality.component.html
     Create Post
 </a>
 
-PROJECT LAB TASK 14- create dropdown option for loggedin user
+PROJECT LAB TASK 14- create dropdown option for logged in user
 ------------------------------------
 
 <div class="hidden md:flex items-center ml-auto gap-4">
