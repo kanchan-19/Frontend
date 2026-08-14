@@ -9158,7 +9158,7 @@ Project Lab Task 26 - Configure register route
 
 Step 1: Enable Authentication sign-in-method
 --------------------------------------
-
+Go to your project -> Security -> Authentication -> Get started -> Sign-in method -> Email/Password -> Enable Email/Password -> Save -> We can see in Sign-in providers that Email/Password is enabled.
 
 Step 2: Inside features create user/pages folder
 --------------------------------------
@@ -9401,9 +9401,12 @@ export class RegisterComponent {
 
   async register() {
 
-    if (this.registerForm.invalid) {
-      this.registerForm.markAllAsTouched();
-      return;
+    if (this.registerForm.invalid) { /* Angular forms have a built-in property invalid that evaluates to true if any control inside the form fails its validation rules (like Validators.required, Validators.minLength, etc.).
+So this condition checks: “Is the form invalid right now?” */
+      this.registerForm.markAllAsTouched(); /* By default, Angular only shows validation errors after a control has been interacted with (touched/dirty).
+markAllAsTouched() forces all controls in the form to be marked as touched, which triggers error messages to appear immediately for every invalid field.
+This is useful when the user tries to submit without filling anything—we want them to see all the validation errors at once. */
+      return; /*  it prevents the form submission logic */
     }
 
     try {
