@@ -9418,7 +9418,12 @@ This is useful when the user tries to submit without filling anything—we want 
 
       alert('Registration successful.');
 
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login']); /* this.router → refers to Angular’s Router service, which we typically inject
+.navigate([...]) → is a method that tells Angular to change the current route programmatically.
+['/login'] → is the target route path. It matches the route we defined in our app-routing.module.ts (for example: { path: 'login', component: LoginComponent }).
+
+So this line says:
+👉 “Programmatically redirect the user to the /login route.” */
 
     } catch (error: any) {
 
@@ -9443,6 +9448,30 @@ import {
 })
 export class UserService {
 
+/* In AngularFire (the official Angular wrapper for Firebase), the built‑in function for registering a user with email and password is:
+createUserWithEmailAndPassword(auth: Auth, email: string, password: string)
+📌 How it works
+auth → the Firebase Auth instance (injected via AngularFire).
+email → the user’s email address.
+password → the user’s chosen password.
+Returns a Promise<UserCredential> which contains the newly created user object.
+
+What is Promise<UserCredential>?
+Promise: In TypeScript/JavaScript, a Promise represents the result of an asynchronous operation. It’s like saying “I’ll give you the result later.”
+
+While the operation is running, the promise is pending.
+When it finishes successfully, the promise is resolved (fulfilled).
+If it fails, the promise is rejected (error).
+
+UserCredential: This is a Firebase Auth object that contains details about the newly created or signed‑in user. It includes:
+user → the actual User object (with properties like uid, email, displayName, etc.).
+providerId → which provider was used (in this case, "password").
+operationType → "signIn" or "link" depending on the action.
+
+So, Promise<UserCredential> means:
+“An asynchronous operation that, when finished, will give you a UserCredential object containing the new user’s details.”
+*/
+
   private auth = inject(Auth);
 
   signUp(email: string, password: string) {
@@ -9460,7 +9489,100 @@ Project Lab Task 28 - Configure Login routes
 
 Step 1: app.routes.ts
 
+To configure login form with Firebase Authentication in Angular, we’ll use the AngularFire Auth API. The built‑in function for login is:
+signInWithEmailAndPassword(auth: Auth, email: string, password: string)
 
+Here’s how you can wire it up:
+
+🔧 Step 1: Provide Firebase Auth in your app
+In main.ts or app.config.ts:
+
+ts
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { environment } from './environments/environment';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
+  ]
+});
+
+Make sure your environment.firebase contains your Firebase project config.
+
+🔧 Step 2: Update your LoginComponent
+
+------------------------------------------------------
+To toggle, navbar component based on user login, update the code of user.service.ts which is present in core/services folder. Remove the following code:
+isLoggedIn = false;
+
+constructor() { }
+
+Add the following code:
+isLoggedIn$ = new BehaviorSubject<boolean>(false);
+
+  constructor() {
+    onAuthStateChanged(this.auth, (user) => {
+      this.isLoggedIn$.next(!!user);
+    });
+   }
+
+Edit the if condition of navbar.html file and change it to @if (userService.isLoggedIn$ | async). Add AsyncPipe in its .ts file.
+
+
+Why the $ symbol in isLoggedIn$
+In Angular projects, it’s a naming convention (not a language feature).
+Developers add $ at the end of variable names to indicate that the variable is an Observable (something we can subscribe to or use with the async pipe in templates).
+So isLoggedIn$ tells us: “This isn’t just a boolean, it’s a stream of booleans that can change over time.”
+
+👉 Without $, it would just look like a normal boolean. With $, we immediately know it’s reactive.
+
+
+What is BehaviorSubject<boolean>?
+It comes from RxJS, the reactive programming library Angular uses.
+A BehaviorSubject is like a special variable that:
+Holds a current value (in this case, a boolean).
+
+Lets other parts of our app subscribe to it and get updates whenever the value changes.
+Always gives subscribers the latest value immediately when they subscribe.
+So BehaviorSubject<boolean>(false) means:
+Start with false (not logged in).
+
+Any component that subscribes will get updates (true when logged in, false when logged out).
+
+👉 The $ suffix (isLoggedIn$) is just a naming convention to remind us it’s an Observable stream, not a plain variable.
+
+
+What is onAuthStateChanged()?
+This is from Firebase Auth, not AngularFire specifically.
+AngularFire re‑exports Firebase APIs, so we can use them directly.
+
+onAuthStateChanged(auth, callback) listens to login/logout events:
+
+When a user logs in → it passes the user object to our callback.
+When a user logs out → it passes null.
+
+So it’s the “listener” that keeps our app in sync with Firebase’s authentication state.
+
+
+Why use !!user
+onAuthStateChanged gives us either a user object (when logged in) or null (when logged out).
+!! is a quick way to convert any value into a true/false:
+If user is an object → !!user becomes true.
+If user is null → !!user becomes false.
+
+
+Think of BehaviorSubject as a live wire carrying login status, and onAuthStateChanged as the switch that flips the wire on/off whenever Firebase detects a login/logout.
+
+
+.next(!!user) pushes that new true/false into the isLoggedIn$ stream.
+Our navbar (or any component using isLoggedIn$ | async) automatically updates.
+
+So:
+BehaviorSubject<boolean> → a reactive boolean stream.
+.next() → push a new value into that stream.
+!!user → convert Firebase’s user object into a simple true/false.
 
 ##################################
 
