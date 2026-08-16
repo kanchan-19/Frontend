@@ -7865,7 +7865,7 @@ Step 2: Update HTML Code:
 PROJECT LAB TASK 16 - Dashboard
 -----------------
 
-Step 1: Create features/dashboard/pages folder
+Step 1: Create features/pages/dashboard folder
 
 Step 2: Inside pages create dashboard component
 
@@ -9583,6 +9583,208 @@ So:
 BehaviorSubject<boolean> → a reactive boolean stream.
 .next() → push a new value into that stream.
 !!user → convert Firebase’s user object into a simple true/false.
+
+-------------------------------------------------------------------------------
+
+Configure Logout Component
+
+Add below function in user.service.ts file
+
+logOut(){
+    return signOut(this.auth);
+  }
+
+signOut → This is a Firebase Authentication function provided by the Firebase SDK (@angular/fire/auth in our case, which is the Angular wrapper around Firebase).
+Purpose → It signs out the currently authenticated user from Firebase.
+Parameter this.auth → This is our Auth instance (created when we injected Firebase Auth into our service). It represents the authentication context for our app.
+Return value → signOut() returns a Promise. When the promise resolves, the user is successfully signed out. If something goes wrong (e.g., network error), the promise rejects with an error.
+logout() is our own custom method inside UserService. Inside it, we’re calling Firebase’s built‑in signOut() function.
+
+ng g c logout inside folder, features/user/pages
+
+logout.html
+<div class = "logout-container">
+  <p>Are you sure you want to log out?</p>
+  <button (click) = "logOut()" class = "logout-btn">
+    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+    Confirm Logout
+  </button>
+</div>
+
+logout.ts
+import { Component, inject } from '@angular/core';
+import { UserService } from '../../../../core/services/user.service';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-logout',
+  imports: [],
+  templateUrl: './logout.html',
+  styleUrl: './logout.css',
+})
+export class LogoutComponent {
+  private userService = inject(UserService);
+  private router = inject(Router);
+
+  logOut() {
+    this.userService.logOut().then(() => {
+      this.router.navigate(['/login']);
+    }).catch((error: any) => {
+      alert('error.message');
+    });
+  }
+
+}
+
+logout.css
+.logout-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.logout-btn{
+  background-color: #ef4444;
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn:hover{
+  background-color: #dc2626;
+}
+----------------------------------------------------------------------------------
+
+Edit the logged-out-functionality component to toggle user so that it can show dropdown
+
+logged-in-functionality.html
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.0/css/all.min.css"
+  integrity="sha512-ApSLB1Pd3/bZN8fWB/RG9YhN/7bd9Hkf3AGaE2mPfebjrxagjuBtx2GcgdqIlJkUzwylBo61r9Xa9NmgBI0swA=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<!-- Create Post -->
+<div class = "logged-in-container">
+
+  <a routerLink="create-post">Create Post</a>
+
+  <div class = "user" (click) = "makeVisible()" >
+    <i class="fa-regular fa-circle-user"></i>
+    Kanchan
+  </div>
+
+  <div class="dropdown" [style.display] = "isVisible ? 'flex' : 'none'">
+    <p>Kanchan</p>
+    <p>kanchan@gmail.com</p>
+    <a href="#">
+      <i class="fa-solid fa-sliders"></i>
+      Dashboard
+    </a>
+    <a routerLink="logout">
+      <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      Logout
+    </a>
+  </div>
+
+</div>
+
+logged-in-functionality.ts
+import { Component, HostListener, OnInit } from '@angular/core';
+import { RouterLink} from '@angular/router';
+import { UserService } from '../../../core/services/user.service';
+
+
+@Component({
+  selector: 'app-logged-in-functionality',
+  imports: [RouterLink],
+  templateUrl: './logged-in-functionality.html',
+  styleUrl: './logged-in-functionality.css',
+})
+export class LoggedInFunctionality{ 
+  isVisible:boolean = false;
+
+  makeVisible(){
+    this.isVisible = !this.isVisible;
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleClick(event: Event){
+    const target = event.target as HTMLElement;
+
+/* event.target → In a DOM event, this is the element that was actually clicked (or triggered the event).
+
+By default, TypeScript only knows event.target as a very generic type (EventTarget), which doesn’t have DOM‑specific methods like .closest(), .classList, etc.
+
+as HTMLElement → This is a type assertion. You’re telling TypeScript: “Trust me, this target is an HTMLElement (like a <div>, <button>, etc.), so let me use HTMLElement methods on it.” */
+
+    if(
+      !target.closest('.dropdown') &&
+      !target.closest('.user')
+    ){
+      this.isVisible = false;
+    }
+  }
+}
+
+@HostListener
+Library: Comes from Angular’s @angular/core package.
+Purpose: It lets you listen to DOM events (like document:click) directly in your component class without manually attaching event listeners.
+In our case, @HostListener('document:click', ['$event']) means: “Run this method whenever a click happens anywhere in the document, and pass the event object into it.”
+
+closest()
+Library: This is a native JavaScript DOM API (part of the standard browser HTMLElement interface).
+Purpose: It checks the element and its ancestors to see if they match a CSS selector.
+Example:
+target.closest('.dropdown')
+→ Returns the nearest ancestor element with class dropdown, or null if none exists.
+
+logged-in-functionality.css
+.logged-in-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  /* important: makes dropdown position relative to container */
+}
+
+#create-post,
+.user {
+  background-color: black;
+  color: white;
+  padding: 0.12rem 0.50rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+#create-post:hover,
+.user:hover {
+  background-color: #333;
+}
+
+.dropdown {
+  flex-direction: column;
+  background-color: white;
+  color: black;
+  border-radius: 4px;
+  gap: 0.75rem;
+  position: absolute;       /* so it floats */
+  top: 100%;                /* place directly below .user */
+  left: auto;               /* align with user */
+  margin-top: 0.5rem;       /* small gap */
+  padding: 1rem;
+}
+
+.dropdown a:hover, .dropdown p:hover{
+  background-color: #f3f4f6;
+}
 
 ##################################
 
