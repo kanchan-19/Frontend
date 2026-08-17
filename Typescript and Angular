@@ -7865,7 +7865,7 @@ Step 2: Update HTML Code:
 PROJECT LAB TASK 16 - Dashboard
 -----------------
 
-Step 1: Create features/pages/dashboard folder
+Step 1: Create features/dashboard/pages folder
 
 Step 2: Inside pages create dashboard component
 
@@ -7969,7 +7969,7 @@ Step 5: logged-in-functionality.component.html
 PROJECT LAB TASK 17 - create dashboard statistics component part 1
 -----------------
 
-Step 1: create folder /features/dashboard/pages/components/
+Step 1: create folder /features/dashboard/pages/
 
 Step 2: ng g c dashboard-statistics
 
@@ -8119,7 +8119,7 @@ Step 3: dashboard-satistics.component.html
 PROJECT LAB TASK 20 - Get all the posts
 --------------------------------
 
-Step 1: Create a model - blogposts.model.ts
+Step 1: Create a model - blogpost.model.ts
 ------------------------------
 export interface BlogPost {
   id: string;
@@ -8198,6 +8198,36 @@ export class BlogpostsService {
 
 }
 
+/*
+getAllPosts(): Observable<BlogPost[]> {
+Defines a method named getAllPosts.
+It returns an Observable of BlogPost[], meaning it will emit a stream of blog post arrays over time (reactive programming style).
+
+const postsRef = collection(this.fireStore, 'blog-posts'); -> Creates a reference to a Firestore collection named "blog-posts".
+collection(this.fireStore, 'blog-posts') tells Firestore: “point to the collection called blog-posts inside my database instance (this.fireStore).”
+postsRef is now a handle we can use to query or listen to that collection.
+
+return collectionData(postsRef, {
+  idField: 'id'
+}) as Observable<BlogPost[]>;
+
+collectionData(postsRef, { idField: 'id' }):
+Subscribes to the Firestore collection reference.
+Returns an observable stream of documents in that collection.
+Each document is automatically converted into a plain JavaScript object.
+The option { idField: 'id' } ensures that the Firestore document ID is included in each object under the property name id.
+
+as Observable<BlogPost[]>:
+Typecasts the result so TypeScript knows this observable will emit arrays of BlogPost objects.
+This helps with type safety when consuming the data elsewhere in our app.
+
+🔑 Summary
+Method declaration → returns an observable of blog posts.
+Collection reference → points to "blog-posts" in Firestore.
+collectionData → listens to that collection and streams its documents.
+idField option → adds the Firestore document ID into each object.
+Type assertion → ensures TypeScript treats the result as Observable<BlogPost[]>.
+*/
 
 Step 3: dashboard.component.ts
 --------------------------------
