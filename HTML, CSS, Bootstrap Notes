@@ -1294,9 +1294,9 @@ Important note: Both Grid and flex can be used together
 4. External framework: Bootstrap
 -----------------------
 
-CSS Framework developer by twitter developer (Mark otto and Jacob)
+CSS Framework developed by twitter developer (Mark otto and Jacob)
 
-Bootstrap is a ready-made collection of CSS and JavaScript components that helps you design websites faster.
+Bootstrap is a ready-made collection of CSS and JavaScript components that helps us design websites faster.
 
 🔥 Why Bootstrap is used
 
@@ -1308,7 +1308,7 @@ Buttons
 Forms
 Navbar
 
-👉 Bootstrap already gives you all of these pre-built.
+👉 Bootstrap already gives us all of these pre-built.
 
 Note:
 A CDN is a system of servers that delivers files (like CSS, JS, images) to users from the nearest location for faster loading.
@@ -1320,15 +1320,15 @@ Files come from nearby servers
 
 ✔ No download needed
 
-You don’t install Bootstrap manually
+We don’t install Bootstrap manually
 
 ✔ Always updated
 
-You get latest version easily
+We get latest version easily
 
-✔ Less load on your server
+✔ Less load on our server
 
-Your website doesn’t carry heavy files
+Our website doesn’t carry heavy files
 
 Example 1:
 ---------
