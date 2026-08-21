@@ -8452,6 +8452,15 @@ export class EditPostComponent {
 
     const postId = this.route.snapshot.paramMap.get('id');
 
+/*
+
+this.route → An ActivatedRoute object injected into our component. It represents the current route that loaded the component.
+snapshot → A static snapshot of the route at the moment the component was created. It won’t update if the URL changes while we’re still on the same component.
+paramMap → A map-like structure that holds all the parameters defined in the route. It’s safer than using params['id'] because it provides null-safety and helper methods.
+.get('id') → Retrieves the value of the parameter named id. For example, if your route is /posts/42, this will return "42".
+
+*/
+
     if (!postId) {
       return;
     }
